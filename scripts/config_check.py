@@ -32,8 +32,15 @@ def validate(root=ROOT):
             raise ValueError("Daemon socket mount forbidden")
     if compose["services"]["proxy"]["ports"] != ["127.0.0.1:8080:8080"]:
         raise ValueError("Only loopback proxy binding supported")
-    if not all(item.get("internal") for item in compose["networks"].values()):
+    if set(compose["networks"]) != {"frontend", "backend", "edge"}:
+        raise ValueError("Unexpected network topology")
+    if not all(compose["networks"][name].get("internal") for name in ("frontend", "backend")):
         raise ValueError("Application networks must be internal")
+    if compose["networks"]["edge"].get("internal") is not False:
+        raise ValueError("Proxy edge must support loopback publishing")
+    for name, service in compose["services"].items():
+        if ("edge" in service["networks"]) != (name == "proxy"):
+            raise ValueError("Only the proxy may join the edge network")
     print("Locked images, explicit namespaces, local bindings and resource policy: PASS")
 
 

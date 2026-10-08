@@ -88,7 +88,7 @@ def inventory(ctx, *, require_volume=True):
     networks = ctx.docker(
         ["network", "ls", "--format", "{{.Name}}"], label="inventory-network-names"
     ).split()
-    for name in (LAB_ID + "_frontend", LAB_ID + "_backend"):
+    for name in (LAB_ID + "_frontend", LAB_ID + "_backend", LAB_ID + "_edge"):
         if name in networks:
             value = json.loads(ctx.docker(["network", "inspect", name], label="inventory-network"))[
                 0
@@ -251,6 +251,11 @@ def execute(ctx):
             ctx.docker(["network", "inspect", LAB_ID + "_" + name], label="network-" + name)
         )[0]
         ctx.check(name + "_internal", net["Internal"] is True)
+    edge = json.loads(ctx.docker(["network", "inspect", LAB_ID + "_edge"], label="network-edge"))[0]
+    ctx.check(
+        "edge_only_proxy",
+        edge["Internal"] is False and set(edge["Containers"]) == {container(ctx, "proxy")["Id"]},
+    )
     ctx.report["workload"] = {
         "kind": "synthetic UTF-8 text analysis",
         "accepted_job_id": job_id,

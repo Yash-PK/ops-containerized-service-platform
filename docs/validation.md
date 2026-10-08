@@ -40,3 +40,11 @@ normal default bridge. Startup diagnostics now retain the unit journal privately
 The same review moved all nginx temporary paths onto its bounded writable tmpfs
 and changed PostgreSQL health to TCP, preventing socket-only initialization from
 satisfying the migration dependency. These changes still require a new real run.
+
+The third run (`20261008T064506703400-development.json`) started the pinned engine,
+built the application, pulled the service images and applied migration 1. Compose
+reported services ready, but the first guest-loopback HTTP connection was refused.
+Its process-only proxy health check had not proved the client path. The proxy now
+has an HTTP readiness probe and a dedicated normal bridge for loopback publishing;
+API/database/cache remain on the two internal networks. Both Compose teardown and
+VM deletion passed on the failed run. Real acceptance remains pending.

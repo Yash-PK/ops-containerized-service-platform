@@ -180,3 +180,11 @@ Design details: [architecture](docs/architecture.md),
 [isolated runtime decision](docs/decisions/0002-owned-vm-runtime.md).
 Original code is [MIT licensed](LICENSE); [NOTICE.md](NOTICE.md) records reuse and
 third-party boundaries.
+
+The proxy also joins a dedicated `edge` bridge, needed for guest-loopback port
+publishing. Only the proxy joins that network; the API, database, worker and cache
+remain on internal application networks. The edge permits proxy egress but binds
+the single published port to 127.0.0.1, with no forwarding from the VM to macOS.
+The proxy health probe performs HTTP through nginx to application readiness. See
+[Docker port publishing](https://docs.docker.com/engine/network/port-publishing/)
+for the distinction between a bridge and an explicitly loopback-bound port.

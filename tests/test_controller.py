@@ -145,4 +145,15 @@ class SafetyTests(unittest.TestCase):
             if name != "proxy":
                 self.assertNotIn("ports", service)
         self.assertEqual(compose["services"]["proxy"]["ports"], ["127.0.0.1:8080:8080"])
-        self.assertTrue(all(net["internal"] for net in compose["networks"].values()))
+        self.assertTrue(
+            all(compose["networks"][name]["internal"] for name in ("frontend", "backend"))
+        )
+        self.assertFalse(compose["networks"]["edge"]["internal"])
+        self.assertEqual(
+            [
+                name
+                for name, service in compose["services"].items()
+                if "edge" in service["networks"]
+            ],
+            ["proxy"],
+        )

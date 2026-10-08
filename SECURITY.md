@@ -86,3 +86,11 @@ buffers request bodies and its client-body timeout is an inactivity timeout, so
 this is not an end-to-end five-second slow-client guarantee. The proxy is bound
 only inside the private lab guest; internet-facing denial-of-service protection
 and authentication require a separately designed and tested deployment.
+
+The proxy also joins a dedicated `edge` bridge, needed for guest-loopback port
+publishing. Only the proxy joins that network; the API, database, worker and cache
+remain on internal application networks. The edge permits proxy egress but binds
+the single published port to 127.0.0.1, with no forwarding from the VM to macOS.
+The proxy health probe performs HTTP through nginx to application readiness. See
+[Docker port publishing](https://docs.docker.com/engine/network/port-publishing/)
+for the distinction between a bridge and an explicitly loopback-bound port.

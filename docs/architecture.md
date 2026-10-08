@@ -116,3 +116,11 @@ also request the API through the proxy.
 API logs carry generated request IDs, fixed route names, HTTP status and elapsed
 milliseconds. Worker logs carry event names and job IDs. These are useful local
 signals, not distributed tracing, an SLO, a benchmark or an alerting system.
+
+The proxy also joins a dedicated `edge` bridge, needed for guest-loopback port
+publishing. Only the proxy joins that network; the API, database, worker and cache
+remain on internal application networks. The edge permits proxy egress but binds
+the single published port to 127.0.0.1, with no forwarding from the VM to macOS.
+The proxy health probe performs HTTP through nginx to application readiness. See
+[Docker port publishing](https://docs.docker.com/engine/network/port-publishing/)
+for the distinction between a bridge and an explicitly loopback-bound port.

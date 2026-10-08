@@ -297,10 +297,12 @@
         "daemon off;"
       ],
       "volumes": [
-        "./containers/nginx.conf:/etc/nginx/nginx.conf:ro"
+        "./containers/nginx.conf:/etc/nginx/nginx.conf:ro",
+        "./containers/proxy-health.sh:/opt/proxy-health.sh:ro"
       ],
       "networks": [
-        "frontend"
+        "frontend",
+        "edge"
       ],
       "ports": [
         "127.0.0.1:8080:8080"
@@ -313,9 +315,8 @@
       "healthcheck": {
         "test": [
           "CMD",
-          "/bin/sh",
-          "-c",
-          "kill -0 \"$(cat /tmp/nginx.pid)\""
+          "/bin/bash",
+          "/opt/proxy-health.sh"
         ],
         "interval": "3s",
         "timeout": "3s",
@@ -377,6 +378,12 @@
     },
     "backend": {
       "internal": true
+    },
+    "edge": {
+      "internal": false,
+      "driver_opts": {
+        "com.docker.network.bridge.host_binding_ipv4": "127.0.0.1"
+      }
     }
   },
   "volumes": {
