@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "revision": "d4d180fd51a23d15462121ade3523fe053862dba",
+  "profile": "clean-clone",
+  "clean_at_start": true,
+  "network_required": "bootstrap downloads checksum/hash-locked tools",
+  "environment": {
+    "os": "Darwin",
+    "release": "25.6.0",
+    "architecture": "arm64",
+    "python": "3.14.7"
+  },
+  "started_at": "2026-10-08T06:45:07.866801+00:00",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-local",
+        "--",
+        "$SOURCE_REPO",
+        "$CLEAN_CLONE"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 120,
+      "duration_seconds": 0.062,
+      "output": "Cloning into '$CLEAN_CLONE'...\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 30,
+      "duration_seconds": 0.012,
+      "output": "d4d180fd51a23d15462121ade3523fe053862dba\n"
+    },
+    {
+      "argv": [
+        "make",
+        "PYTHON=/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "bootstrap"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 900,
+      "duration_seconds": 8.065,
+      "output": "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14 scripts/bootstrap.py\nCollecting psycopg==3.3.6 (from -r /private$CLEAN_CLONE/requirements.lock (line 3))\n  Using cached psycopg-3.3.6-py3-none-any.whl (215 kB)\nCollecting psycopg-binary==3.3.6 (from -r /private$CLEAN_CLONE/requirements.lock (line 6))\n  Using cached psycopg_binary-3.3.6-cp314-cp314-macosx_11_0_arm64.whl (4.8 MB)\nCollecting valkey==6.1.1 (from -r /private$CLEAN_CLONE/requirements.lock (line 74))\n  Using cached valkey-6.1.1-py3-none-any.whl (259 kB)\nCollecting ruff==0.16.10 (from -r /private$CLEAN_CLONE/requirements-dev.lock (line 4))\n  Using cached ruff-0.16.10-py3-none-macosx_11_0_arm64.whl (9.8 MB)\nInstalling collected packages: valkey, ruff, psycopg-binary, psycopg\n\nSuccessfully installed psycopg-3.3.6 psycopg-binary-3.3.6 ruff-0.16.10 valkey-6.1.1\nDownloading shellcheck 0.11.0 (darwin-arm64)\nDownloading shfmt 3.14.1 (darwin-arm64)\nDownloading actionlint 1.7.12 (darwin-arm64)\nDownloading gitleaks 8.30.1 (darwin-arm64)\nDeveloper tools installed locally. No global packages changed.\n.venv/bin/python scripts/bootstrap_provider.py\nReleased fleet provider source and MIT license: verified locally\nLima: verified and installed only in .tools/lima; no VM started\n"
+    },
+    {
+      "argv": [
+        "make",
+        "doctor"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 600,
+      "duration_seconds": 2.208,
+      "output": "/private$CLEAN_CLONE/.venv/bin/python scripts/doctor.py\nruff 0.16.10\nController: Darwin arm64 Python 3.14.7\nshellcheck: 0.11.0\nshfmt: 3.14.1\nactionlint: 1.7.12\ngitleaks: 8.30.1\nVM provider: verified local Lima; real profile requires hardware virtualization and free resources\n"
+    },
+    {
+      "argv": [
+        "make",
+        "validate"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 600,
+      "duration_seconds": 1.918,
+      "output": ".venv/bin/ruff check .\nAll checks passed!\n.venv/bin/ruff format --check .\n52 files already formatted\n.tools/bin/shellcheck scripts/demo.sh containers/*.sh\n.tools/bin/shfmt -d -i 2 scripts/demo.sh containers/*.sh\nPATH=\"/private$CLEAN_CLONE/.tools/bin:$PATH\" .tools/bin/actionlint\n/private$CLEAN_CLONE/.venv/bin/python scripts/quality.py\nRequired documents, local links and outgoing artifact boundaries: PASS\n/private$CLEAN_CLONE/.venv/bin/python scripts/config_check.py\nLocked images, explicit namespaces, local bindings and resource policy: PASS\n/private$CLEAN_CLONE/.venv/bin/python -m unittest discover -s tests -v\ntest_absolute_deadline_closes_dripped_headers_and_body (test_api.APITests.test_absolute_deadline_closes_dripped_headers_and_body) ... ok\ntest_async_acceptance_replay_conflict_and_lookup (test_api.APITests.test_async_acceptance_replay_conflict_and_lookup) ... ok\ntest_deep_bounded_json_is_rejected_without_enqueuing (test_api.APITests.test_deep_bounded_json_is_rejected_without_enqueuing) ... ok\ntest_dependency_outage_is_bounded_503_but_liveness_survives (test_api.APITests.test_dependency_outage_is_bounded_503_but_liveness_survives) ... ok\ntest_invalid_body_headers_and_unknown_job_do_not_enqueue (test_api.APITests.test_invalid_body_headers_and_unknown_job_do_not_enqueue) ... ok\ntest_operational_logs_exclude_payload_and_idempotency_key (test_api.APITests.test_operational_logs_exclude_payload_and_idempotency_key) ... ok\ntest_raw_ambiguous_framing_is_rejected (test_api.APITests.test_raw_ambiguous_framing_is_rejected) ... ok\ntest_shutdown_interrupts_incomplete_request_without_waiting_for_deadline (test_api.APITests.test_shutdown_interrupts_incomplete_request_without_waiting_for_deadline) ... ok\ntest_config_ignores_unrelated_credentials_and_rejects_host_injection (test_controller.SafetyTests.test_config_ignores_unrelated_credentials_and_rejects_host_injection) ... ok\ntest_dirty_formal_source_fails_before_provider (test_controller.SafetyTests.test_dirty_formal_source_fails_before_provider) ... ok\ntest_evidence_no_overwrite_and_no_symlink_escape (test_controller.SafetyTests.test_evidence_no_overwrite_and_no_symlink_escape) ... ok\ntest_exact_target_and_confirmation (test_controller.SafetyTests.test_exact_target_and_confirmation) ... ok\ntest_file_context_excludes_runtime_and_credentials (test_controller.SafetyTests.test_file_context_excludes_runtime_and_credentials) ... ok\ntest_guest_runtime_parents_private_and_no_symlink_adoption (test_controller.SafetyTests.test_guest_runtime_parents_private_and_no_symlink_adoption) ... ok\ntest_no_vm_on_unsupported_controller (test_controller.SafetyTests.test_no_vm_on_unsupported_controller) ... ok\ntest_payload_only_allowlisted_runtime_no_private_content (test_controller.SafetyTests.test_payload_only_allowlisted_runtime_no_private_content) ... ok\ntest_reject_runtime_symlink_and_unsafe_mode (test_controller.SafetyTests.test_reject_runtime_symlink_and_unsafe_mode) ... ok\ntest_reject_secret_symlink_writable_bad_format (test_controller.SafetyTests.test_reject_secret_symlink_writable_bad_format) ... ok\ntest_secret_generation_permissions_unique_and_no_overwrite (test_controller.SafetyTests.test_secret_generation_permissions_unique_and_no_overwrite) ... ok\ntest_analysis_is_content_derived_and_unicode_aware (test_domain.DomainTests.test_analysis_is_content_derived_and_unicode_aware) ... ok\ntest_input_rejects_shape_type_empty_nul_surrogate_and_byte_overflow (test_domain.DomainTests.test_input_rejects_shape_type_empty_nul_surrogate_and_byte_overflow) ... ok\ntest_key_and_identifier_are_explicitly_bounded (test_domain.DomainTests.test_key_and_identifier_are_explicitly_bounded) ... ok\ntest_changed_source_or_fingerprint_error_never_loses_failure_evidence (test_lifecycle.ControllerLifecycleTests.test_changed_source_or_fingerprint_error_never_loses_failure_evidence) ... ok\ntest_cleanup_failure_invalidates_otherwise_successful_run (test_lifecycle.ControllerLifecycleTests.test_cleanup_failure_invalidates_otherwise_successful_run) ... ok\ntest_existing_inventory_is_never_adopted_or_destroyed (test_lifecycle.ControllerLifecycleTests.test_existing_inventory_is_never_adopted_or_destroyed) ... ok\ntest_phase_nonzero_command_cannot_pass_through_valid_json (test_lifecycle.ControllerLifecycleTests.test_phase_nonzero_command_cannot_pass_through_valid_json) ... ok\ntest_phase_requires_boolean_success_and_matching_object_identity (test_lifecycle.ControllerLifecycleTests.test_phase_requires_boolean_success_and_matching_object_identity) ... ok\ntest_private_diagnostics_are_removed_from_public_result (test_lifecycle.ControllerLifecycleTests.test_private_diagnostics_are_removed_from_public_result) ... ok\ntest_start_prepare_and_compose_failures_preserve_report_and_cleanup (test_lifecycle.ControllerLifecycleTests.test_start_prepare_and_compose_failures_preserve_report_and_cleanup) ... ok\ntest_success_reboots_owned_vm_before_compose_and_destroys_it (test_lifecycle.ControllerLifecycleTests.test_success_reboots_owned_vm_before_compose_and_destroys_it) ... ok\ntest_absent_volume_does_not_bypass_foreign_container_guard (test_lifecycle.GuestCleanupTests.test_absent_volume_does_not_bypass_foreign_container_guard) ... ok\ntest_wrong_volume_or_network_labels_prevent_cleanup (test_lifecycle.GuestCleanupTests.test_wrong_volume_or_network_labels_prevent_cleanup) ... ok\ntest_cleanup_refuses_changed_owner_or_marker (test_sqlcheck.SQLCheckSafetyTests.test_cleanup_refuses_changed_owner_or_marker) ... ok\ntest_collision_is_preserved_without_create_or_drop (test_sqlcheck.SQLCheckSafetyTests.test_collision_is_preserved_without_create_or_drop) ... ok\ntest_dry_run_never_reads_credentials_or_connects (test_sqlcheck.SQLCheckSafetyTests.test_dry_run_never_reads_credentials_or_connects) ... ok\ntest_execution_requires_exact_confirmation_before_credentials (test_sqlcheck.SQLCheckSafetyTests.test_execution_requires_exact_confirmation_before_credentials) ... ok\ntest_failed_setup_still_removes_only_marked_owned_schema (test_sqlcheck.SQLCheckSafetyTests.test_failed_setup_still_removes_only_marked_owned_schema) ... ok\ntest_foreign_database_or_app_configuration_rejected_before_connect (test_sqlcheck.SQLCheckSafetyTests.test_foreign_database_or_app_configuration_rejected_before_connect) ... ok\ntest_isolated_search_path_rejects_injection (test_sqlcheck.SQLCheckSafetyTests.test_isolated_search_path_rejects_injection) ... ok\ntest_cache_accepts_complete_record_but_rejects_corrupt_results (test_worker_cache.WorkerCacheTests.test_cache_accepts_complete_record_but_rejects_corrupt_results) ... ok\ntest_cache_deep_json_duplicate_fields_and_oversized_bytes_fall_back (test_worker_cache.WorkerCacheTests.test_cache_deep_json_duplicate_fields_and_oversized_bytes_fall_back) ... ok\ntest_cache_failure_corruption_and_wrong_identifier_fall_back (test_worker_cache.WorkerCacheTests.test_cache_failure_corruption_and_wrong_identifier_fall_back) ... ok\ntest_no_job_has_no_write_and_invalid_job_retries_under_same_token (test_worker_cache.WorkerCacheTests.test_no_job_has_no_write_and_invalid_job_retries_under_same_token) ... ok\ntest_only_terminal_success_is_cached_with_finite_ttl (test_worker_cache.WorkerCacheTests.test_only_terminal_success_is_cached_with_finite_ttl) ... ok\ntest_worker_completes_real_calculation_with_claim_token (test_worker_cache.WorkerCacheTests.test_worker_completes_real_calculation_with_claim_token) ... ok\n\n----------------------------------------------------------------------\nRan 45 tests in 0.473s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "make",
+        "demo"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 600,
+      "duration_seconds": 0.119,
+      "output": "bash scripts/demo.sh\n{\n  \"fixture_demo\": {\n    \"sha256\": \"01a843a9f23fbcdcb04bb017b82107cd1fb2915bf106f5d43361008411bb7f87\",\n    \"bytes\": 41,\n    \"characters\": 41,\n    \"words\": 5,\n    \"lines\": 2\n  }\n}\n{\"dry_run\": true, \"action\": \"integration\", \"lab_id\": \"ops-container-platform-reference\", \"target\": \"one project-owned ARM64 VZ VM; no host Docker context\", \"cleanup\": \"only inventoried VM and its lab data\"}\nExact --lab-id and matching --confirm required for execution\nForeign target rejected. This controller demo allocated no VM or container.\n"
+    },
+    {
+      "argv": [
+        "make",
+        "security"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 600,
+      "duration_seconds": 1.606,
+      "output": "/private$CLEAN_CLONE/.venv/bin/python scripts/security.py\n12:15PM INF scanned ~331989 bytes (331.99 KB) in 29ms\n12:15PM INF no leaks found\n12:15PM INF scanned ~331989 bytes (331.99 KB) in 32.7ms\n12:15PM INF no leaks found\n12:15PM INF Unknown SCM platform. Use --platform to include links in findings. host=\n12:15PM INF 2 commits scanned.\n12:15PM INF scanned ~332245 bytes (332.24 KB) in 121ms\n12:15PM INF no leaks found\nWorking-tree and staged-file scans: PASS\n"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "timeout_seconds": 30,
+      "duration_seconds": 0.015,
+      "output": ""
+    }
+  ],
+  "assertions": [
+    {
+      "name": "clone_revision_matches_source",
+      "passed": true
+    },
+    {
+      "name": "clone_remains_clean_after_checks",
+      "passed": true
+    }
+  ],
+  "not_run": [],
+  "temporary_clone_removed": true,
+  "finished_at": "2026-10-08T06:45:21.941974+00:00",
+  "passed": true
+}

@@ -620,5 +620,13 @@
       ],
       "limitation": "Pinned static binaries are for disposable testing; no automatic security updates or exhaustive transitive audit."
     }
+  },
+  "ubuntu_base_manifest": {
+    "url": "https://cloud-images.ubuntu.com/releases/noble/release-20260926/ubuntu-24.04-server-cloudimg-arm64.manifest",
+    "sha256": "be8373ae3b3be49905c1e9984196196cc9148c6437ec96a735e90428ee8b8ac6",
+    "iptables": "1.8.10-3ubuntu2",
+    "snapshot_comparison": "20261007T000000Z main/updates/security indexes re-fetched and hashes matched; selected image already contains snapshot iptables version",
+    "selected_deb_sha256": "cbaacdb34f19a9b29f569205cdbf1e5851f63fde60777c5cf539a2b46c0c2fc7",
+    "verified_at": "2026-10-08"
   }
 }

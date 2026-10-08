@@ -80,3 +80,9 @@ available, open an issue requesting one without exploit details, credentials or
 private logs. Include the affected revision, synthetic reproduction and expected
 boundary. Never paste a token or password into an issue. There is no guaranteed
 response SLA or supported production deployment.
+
+The Python server imposes an absolute deadline on its own accepted sockets. nginx
+buffers request bodies and its client-body timeout is an inactivity timeout, so
+this is not an end-to-end five-second slow-client guarantee. The proxy is bound
+only inside the private lab guest; internet-facing denial-of-service protection
+and authentication require a separately designed and tested deployment.
