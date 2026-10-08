@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-08",
+  "repository": "https://github.com/Yash-PK/ops-linux-fleet-automation",
+  "release": "v0.1.0",
+  "release_url": "https://github.com/Yash-PK/ops-linux-fleet-automation/releases/tag/v0.1.0",
+  "revision": "1531b86b54eee87d01da83f7b55d7d405f43fadb",
+  "license": "MIT",
+  "files": {
+    "fleet_provider.py": {
+      "url": "https://raw.githubusercontent.com/Yash-PK/ops-linux-fleet-automation/1531b86b54eee87d01da83f7b55d7d405f43fadb/scripts/lab.py",
+      "sha256": "ca44249b876b10d082c7ef9b7c99a458ec8b0c287e027cb378ac2877a0d33e98",
+      "bytes": 29178,
+      "original_path": "scripts/lab.py"
+    },
+    "fleet-provider-LICENSE": {
+      "url": "https://raw.githubusercontent.com/Yash-PK/ops-linux-fleet-automation/1531b86b54eee87d01da83f7b55d7d405f43fadb/LICENSE",
+      "sha256": "5576892b67fc51e95b044bdaa80c0c79ba054f23f09929682497df1885f545f0",
+      "bytes": 1075,
+      "original_path": "LICENSE"
+    }
+  }
+}

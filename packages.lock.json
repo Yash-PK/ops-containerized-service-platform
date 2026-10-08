@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-08",
+  "distribution": "Ubuntu 24.04",
+  "architecture": "arm64",
+  "snapshot": "20261007T000000Z",
+  "uri": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z",
+  "pockets": [
+    "noble",
+    "noble-updates",
+    "noble-security"
+  ],
+  "indexes": [
+    {
+      "url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble/main/binary-arm64/Packages.xz",
+      "sha256": "4a1901e6124fb0a111f5dffc8f5c14474f449e2ecfa71f2eaf0b29917edb53f9",
+      "release_url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble/InRelease",
+      "signature_status": "APT must verify Ubuntu archive signatures during guest installation; this research matched index hashes to TLS-fetched Release only"
+    },
+    {
+      "url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble/universe/binary-arm64/Packages.xz",
+      "sha256": "6df230cf5cfebcbd59e4e2713b8eed07dc0aaed66fb471ebf046cb70ccb07275",
+      "release_url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble/InRelease",
+      "signature_status": "APT must verify Ubuntu archive signatures during guest installation; this research matched index hashes to TLS-fetched Release only"
+    },
+    {
+      "url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-updates/main/binary-arm64/Packages.xz",
+      "sha256": "92a31a0de8d0d0c291028f701658009c088bc99a47951ddc7dbde7eae0231480",
+      "release_url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-updates/InRelease",
+      "signature_status": "APT must verify Ubuntu archive signatures during guest installation; this research matched index hashes to TLS-fetched Release only"
+    },
+    {
+      "url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-updates/universe/binary-arm64/Packages.xz",
+      "sha256": "e7da8fa7c4f6ed361e0488903de32dd16f594ceedafcd418fc096b10a43c635d",
+      "release_url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-updates/InRelease",
+      "signature_status": "APT must verify Ubuntu archive signatures during guest installation; this research matched index hashes to TLS-fetched Release only"
+    },
+    {
+      "url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-security/main/binary-arm64/Packages.xz",
+      "sha256": "6aee8579203f21dc8f651c8ee2e8883ef2117d169bfded58dd07355e0e229658",
+      "release_url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-security/InRelease",
+      "signature_status": "APT must verify Ubuntu archive signatures during guest installation; this research matched index hashes to TLS-fetched Release only"
+    },
+    {
+      "url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-security/universe/binary-arm64/Packages.xz",
+      "sha256": "12b0b55ecdc52c02fb6c6d30ced00d8fe9a3f7c38e8229b26d982654fb81685c",
+      "release_url": "https://snapshot.ubuntu.com/ubuntu/20261007T000000Z/dists/noble-security/InRelease",
+      "signature_status": "APT must verify Ubuntu archive signatures during guest installation; this research matched index hashes to TLS-fetched Release only"
+    }
+  ],
+  "packages": {
+    "openssl": {
+      "version": "3.0.13-0ubuntu3.16",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "07fa666e2dfe758e5c4e19ccc695a19e8a56fb512fa55bd7de89219a1e65d372",
+      "filename": "pool/main/o/openssl/openssl_3.0.13-0ubuntu3.16_arm64.deb",
+      "source": "openssl",
+      "depends": "libc6 (>= 2.34), libssl3t64 (>= 3.0.9)",
+      "source_pocket": "noble-updates"
+    },
+    "iproute2": {
+      "version": "6.1.0-1ubuntu6.4",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "5cc0bfac0a176309c10c6ef2796c550c6a0ecfc53b9f428b4a632b4f4a2ce8df",
+      "filename": "pool/main/i/iproute2/iproute2_6.1.0-1ubuntu6.4_arm64.deb",
+      "source": "iproute2",
+      "depends": "debconf (>= 0.5) | debconf-2.0, libbpf1 (>= 1:0.6.0), libc6 (>= 2.38), libcap2 (>= 1:2.10), libdb5.3t64, libelf1t64 (>= 0.131), libmnl0 (>= 1.0.3-4~), libselinux1 (>= 3.1~), libxtables12 (>= 1.6.0+snapshot20161117), libcap2-bin",
+      "source_pocket": "noble-updates"
+    },
+    "nftables": {
+      "version": "1.0.9-1ubuntu0.1",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "8b26cbe6e1155e1507128b0c5183713226d10570462216cf2f41c27f3028de3b",
+      "filename": "pool/main/n/nftables/nftables_1.0.9-1ubuntu0.1_arm64.deb",
+      "source": "nftables",
+      "depends": "libnftables1 (= 1.0.9-1ubuntu0.1), libc6 (>= 2.34), libedit2 (>= 3.1-20130611-0)",
+      "source_pocket": "noble-updates"
+    },
+    "libssl3t64": {
+      "version": "3.0.13-0ubuntu3.16",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "8b2dff5ee02f3e1eaaf8106ff372c5ba61b88ee57b7658e163a2de0b90b4956e",
+      "filename": "pool/main/o/openssl/libssl3t64_3.0.13-0ubuntu3.16_arm64.deb",
+      "source": "openssl",
+      "depends": "libc6 (>= 2.38)",
+      "source_pocket": "noble-updates"
+    },
+    "apparmor": {
+      "version": "4.0.1really4.0.1-0ubuntu0.24.04.8",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "22c011ff3c8d3b332389d3cff35696adf8716220d2bbbdb4d46ccfe0ec0e3c21",
+      "filename": "pool/main/a/apparmor/apparmor_4.0.1really4.0.1-0ubuntu0.24.04.8_arm64.deb",
+      "source": "apparmor",
+      "depends": "debconf, debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.38)",
+      "source_pocket": "noble-updates"
+    },
+    "libapparmor1": {
+      "version": "4.0.1really4.0.1-0ubuntu0.24.04.8",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "02674239eb575406dae2474e460ee801ebb9c7336892df30772f03e8a7ec7bab",
+      "filename": "pool/main/a/apparmor/libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.8_arm64.deb",
+      "source": "apparmor",
+      "depends": "libc6 (>= 2.38)",
+      "source_pocket": "noble-updates"
+    },
+    "libpython3.12-minimal": {
+      "version": "3.12.3-1ubuntu0.17",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "11790e3fc5deb4867c7fb762aa5f4f710093501f62b60ef16dd427ea2495bcc6",
+      "filename": "pool/main/p/python3.12/libpython3.12-minimal_3.12.3-1ubuntu0.17_arm64.deb",
+      "source": "python3.12",
+      "depends": "libc6 (>= 2.17), libssl3t64 (>= 3.0.0)",
+      "source_pocket": "noble-updates"
+    },
+    "libpython3.12-stdlib": {
+      "version": "3.12.3-1ubuntu0.17",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "b9462bf2f55bfffaf304a597c7964354e0d49ab20eed028f55f7183f2210581e",
+      "filename": "pool/main/p/python3.12/libpython3.12-stdlib_3.12.3-1ubuntu0.17_arm64.deb",
+      "source": "python3.12",
+      "depends": "libpython3.12-minimal (= 3.12.3-1ubuntu0.17), media-types | mime-support, netbase, tzdata, libbz2-1.0, libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libdb5.3t64, libffi8 (>= 3.4), liblzma5 (>= 5.1.1alpha+20120614), libncursesw6 (>= 6.1), libreadline8t64 (>= 7.0~beta), libsqlite3-0 (>= 3.36.0), libtinfo6 (>= 6)",
+      "source_pocket": "noble-updates"
+    },
+    "libpython3.12t64": {
+      "version": "3.12.3-1ubuntu0.17",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "9e9c6f862540ecb99e495cc8b67373c9f53cff635c3b1d56db3cc6fa47bfd3a1",
+      "filename": "pool/main/p/python3.12/libpython3.12t64_3.12.3-1ubuntu0.17_arm64.deb",
+      "source": "python3.12",
+      "depends": "libpython3.12-stdlib (= 3.12.3-1ubuntu0.17), libc6 (>= 2.38), libexpat1 (>= 2.6.0), zlib1g (>= 1:1.2.0)",
+      "source_pocket": "noble-updates"
+    },
+    "linux-image-6.8.0-146-generic": {
+      "version": "6.8.0-146.146",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "ee35dffd32c672d6b1814c0d9c8001c1656e06e718ebd5fb15565d0b7e51e418",
+      "filename": "pool/main/l/linux-signed/linux-image-6.8.0-146-generic_6.8.0-146.146_arm64.deb",
+      "source": "linux-signed",
+      "depends": "kmod, linux-base (>= 4.5ubuntu1~16.04.1), linux-modules-6.8.0-146-generic",
+      "source_pocket": "noble-updates"
+    },
+    "linux-image-generic": {
+      "version": "6.8.0-146.146",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "119d84966dc5bbb4c6ed37d628a5250dc163f1cab9612f2b62cd6bd17c1e33c0",
+      "filename": "pool/main/l/linux-meta/linux-image-generic_6.8.0-146.146_arm64.deb",
+      "source": "linux-meta",
+      "depends": "linux-image-6.8.0-146-generic, linux-modules-extra-6.8.0-146-generic, linux-firmware",
+      "source_pocket": "noble-updates"
+    },
+    "linux-modules-6.8.0-146-generic": {
+      "version": "6.8.0-146.146",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "37b3c96d7fc3749eca42d46fa9195de1ad133fa42f5e0462d907c2132b838c3d",
+      "filename": "pool/main/l/linux/linux-modules-6.8.0-146-generic_6.8.0-146.146_arm64.deb",
+      "source": "linux",
+      "depends": "",
+      "source_pocket": "noble-updates"
+    },
+    "linux-modules-extra-6.8.0-146-generic": {
+      "version": "6.8.0-146.146",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "ee697f40d714d44eb05d73e3fc3f9abed8224c6433540aa27c9e8b6843804c3e",
+      "filename": "pool/main/l/linux/linux-modules-extra-6.8.0-146-generic_6.8.0-146.146_arm64.deb",
+      "source": "linux",
+      "depends": "linux-modules-6.8.0-146-generic, wireless-regdb",
+      "source_pocket": "noble-updates"
+    },
+    "openssh-client": {
+      "version": "1:9.6p1-3ubuntu13.19",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "86e6f8b847293b7e9d8895f5fc698b72dea1cf58ecc9312e588b64cf73e6f247",
+      "filename": "pool/main/o/openssh/openssh-client_9.6p1-3ubuntu13.19_arm64.deb",
+      "source": "openssh",
+      "depends": "adduser, passwd, libc6 (>= 2.38), libedit2 (>= 2.11-20080614-0), libfido2-1 (>= 1.8.0), libgssapi-krb5-2 (>= 1.17), libselinux1 (>= 3.1~), libssl3t64 (>= 3.0.13), zlib1g (>= 1:1.1.4)",
+      "source_pocket": "noble-updates"
+    },
+    "openssh-server": {
+      "version": "1:9.6p1-3ubuntu13.19",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "66aa97ba542be76703764b7e311fc0b29f820f32e16d503a0d084b125acd094a",
+      "filename": "pool/main/o/openssh/openssh-server_9.6p1-3ubuntu13.19_arm64.deb",
+      "source": "openssh",
+      "depends": "adduser, libpam-modules, libpam-runtime, lsb-base, openssh-client (= 1:9.6p1-3ubuntu13.19), openssh-sftp-server, procps, ucf, debconf (>= 0.5) | debconf-2.0, libaudit1 (>= 1:2.2.1), libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libcrypt1 (>= 1:4.1.0), libgssapi-krb5-2 (>= 1.17), libkrb5-3 (>= 1.13~alpha1+dfsg), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~), libssl3t64 (>= 3.0.13), libwrap0 (>= 7.6-4~), zlib1g (>= 1:1.1.4)",
+      "source_pocket": "noble-updates"
+    },
+    "openssh-sftp-server": {
+      "version": "1:9.6p1-3ubuntu13.19",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "5776107878705a9c30f64c3d498d2f0deea374bb47cb8b9650f9e04069d311f8",
+      "filename": "pool/main/o/openssh/openssh-sftp-server_9.6p1-3ubuntu13.19_arm64.deb",
+      "source": "openssh",
+      "depends": "openssh-client (= 1:9.6p1-3ubuntu13.19), libc6 (>= 2.38)",
+      "source_pocket": "noble-updates"
+    },
+    "python3.12": {
+      "version": "3.12.3-1ubuntu0.17",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "4dcc676815989c3d32ef43f8b98d37ecfd60cff8a47022152120246f21903cf0",
+      "filename": "pool/main/p/python3.12/python3.12_3.12.3-1ubuntu0.17_arm64.deb",
+      "source": "python3.12",
+      "depends": "python3.12-minimal (= 3.12.3-1ubuntu0.17), libpython3.12-stdlib (= 3.12.3-1ubuntu0.17), media-types | mime-support, tzdata",
+      "source_pocket": "noble-updates"
+    },
+    "python3.12-minimal": {
+      "version": "3.12.3-1ubuntu0.17",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "be39fa8380f1e65fc02701cdbc8652acd924d8576b4ba1bd772141040a22b15f",
+      "filename": "pool/main/p/python3.12/python3.12-minimal_3.12.3-1ubuntu0.17_arm64.deb",
+      "source": "python3.12",
+      "depends": "libpython3.12-minimal (= 3.12.3-1ubuntu0.17), libexpat1 (>= 2.6.0), zlib1g (>= 1:1.2.0)",
+      "source_pocket": "noble-updates"
+    },
+    "systemd": {
+      "version": "255.4-1ubuntu8.17",
+      "architecture": "arm64",
+      "pocket": "noble-updates",
+      "component": "main",
+      "sha256": "154488f0c0846f4e8c82afe3aa2e2e9d2ca117acf7db45bb778f81186c795139",
+      "filename": "pool/main/s/systemd/systemd_255.4-1ubuntu8.17_arm64.deb",
+      "source": "systemd",
+      "depends": "libacl1 (>= 2.2.23), libapparmor1 (>= 2.13), libaudit1 (>= 1:2.2.1), libcryptsetup12 (>= 2:2.4), libfdisk1 (>= 2.33), libkmod2 (>= 15), libpam0g (>= 0.99.7.1), libseccomp2 (>= 2.3.1), libsystemd-shared (= 255.4-1ubuntu8.17), libsystemd0 (= 255.4-1ubuntu8.17), systemd-dev (>= 255.4-1ubuntu8.17), mount",
+      "source_pocket": "noble-updates"
+    }
+  },
+  "selection": "VM runtime/kernel/SSH/Python/AppArmor pins reused from released ops-network-storage-services-lab v0.1.0 signed Ubuntu snapshot audit; Docker binaries separate.",
+  "expected_kernel": "6.8.0-146-generic"
+}

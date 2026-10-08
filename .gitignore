@@ -1,0 +1,16 @@
+.venv/
+.tools/
+.deps/
+.runtime/
+__pycache__/
+.ruff_cache/
+*.py[cod]
+.env
+.env.*
+*.key
+*.pem
+*.log
+*.pcap
+*.img
+*.qcow2
+.DS_Store

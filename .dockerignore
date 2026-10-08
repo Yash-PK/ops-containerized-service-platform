@@ -1,0 +1,7 @@
+**
+!Dockerfile
+!requirements.lock
+!opsjobs/
+!opsjobs/*.py
+!migrations/
+!migrations/*.sql

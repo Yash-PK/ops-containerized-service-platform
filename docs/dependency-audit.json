@@ -1,0 +1,624 @@
+{
+  "verified_at": "2026-10-08",
+  "python": {
+    "psycopg": {
+      "version": "3.3.6",
+      "source": "https://pypi.org/pypi/psycopg/3.3.6/json",
+      "requires_python": ">=3.10",
+      "vulnerabilities": [],
+      "wheels": [
+        {
+          "filename": "psycopg-3.3.6-py3-none-any.whl",
+          "sha256": "a1db9f7148b06a28606767efaca51fa6f9398c5c0a3810519be69d7000bdb631",
+          "uploaded_at": "2026-09-18T13:15:29.374570Z"
+        }
+      ]
+    },
+    "psycopg-binary": {
+      "version": "3.3.6",
+      "source": "https://pypi.org/pypi/psycopg-binary/3.3.6/json",
+      "requires_python": ">=3.10",
+      "vulnerabilities": [],
+      "wheels": [
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-macosx_10_9_x86_64.whl",
+          "sha256": "7beb3e41c9a1e509f3ed85263386588cbe3e975aa67be21f79f44fd35ffaeefc",
+          "uploaded_at": "2026-09-18T13:15:36.605603Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-macosx_11_0_arm64.whl",
+          "sha256": "aa73160077345ec21b3f51e8e24b3de2e99586217e497629326eb9b2ea88c52e",
+          "uploaded_at": "2026-09-18T13:15:46.566812Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "sha256": "f87dbdc42e78ee0f7ea180c03f8c78e80a949e373066629bd90fefff10552dff",
+          "uploaded_at": "2026-09-18T13:15:52.886993Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "a9348c5b43a3bb5ef8c2e89d5237c9c87eeafb01d338c84a7aebbc5cd0313299",
+          "uploaded_at": "2026-09-18T13:16:00.530792Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "0a52991594ac4db888c7d39bccef331797e30cb31a95cae02cf2607f83a42dc2",
+          "uploaded_at": "2026-09-18T13:16:10.385633Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl",
+          "sha256": "5ea8beeb5541780b4b50b462eeacbc4f594ce3b911dc20c81c75f267876f71d2",
+          "uploaded_at": "2026-09-18T13:16:16.843953Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-musllinux_1_2_aarch64.whl",
+          "sha256": "198a48e68cc99ccac03ba95ac857e73aa66f3bf6be77019fafb0832a05f7ad03",
+          "uploaded_at": "2026-09-18T13:16:23.889302Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-musllinux_1_2_ppc64le.whl",
+          "sha256": "fa34eb47969297471db7b7f193622c7e3ee839ec05abd05f1fe104d5b1b1dcf4",
+          "uploaded_at": "2026-09-18T13:16:29.330723Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-musllinux_1_2_riscv64.whl",
+          "sha256": "b979a42815410432420275412633960807178b1ce26591a16ce06e78a5bd4bb2",
+          "uploaded_at": "2026-09-18T13:16:34.119057Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-musllinux_1_2_x86_64.whl",
+          "sha256": "889e42acec10450185e0cdfb396f375e2c1a8d7737c114830a7fde4654f59e30",
+          "uploaded_at": "2026-09-18T13:16:38.692598Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp310-cp310-win_amd64.whl",
+          "sha256": "cbd5f73073ed19c378d4c35499db1e3e703a5b1a324e521204065967bfaa7a18",
+          "uploaded_at": "2026-09-18T13:16:44.454670Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-macosx_10_9_x86_64.whl",
+          "sha256": "be4f9b3c9338ac5dd217c5847e21521b396c8117f78dc420d495a5c49bbef874",
+          "uploaded_at": "2026-09-18T13:16:53.393554Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-macosx_11_0_arm64.whl",
+          "sha256": "f0535693ce476a722b718b002d5d2c27d47e71ca945276ac194409c98e74c492",
+          "uploaded_at": "2026-09-18T13:16:58.939454Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "sha256": "3c9e663b2e800e3218994cf948c11bcc2844e6491b34aa80d089baf6531827bf",
+          "uploaded_at": "2026-09-18T13:17:08.515342Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "a2e44a342d2aee40508e28a563d8961c39d9bbd8cae36d8578f0a3c6658aab0f",
+          "uploaded_at": "2026-09-18T13:17:16.240175Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "5f598f19fa9a91540b5cee17932ffd227b7b53a481605bcc4573c0eafa647300",
+          "uploaded_at": "2026-09-18T13:17:23.348808Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl",
+          "sha256": "6ff05561e4a067d35507dc5c90f1deb2ec1c9703ac5cccc1bc26e08a197f9c5a",
+          "uploaded_at": "2026-09-18T13:17:28.847502Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-musllinux_1_2_aarch64.whl",
+          "sha256": "566dd827f17728efdf7d88a5b066f815170f6fdad13967ae952842d90e6aaa9f",
+          "uploaded_at": "2026-09-18T13:17:36.668487Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-musllinux_1_2_ppc64le.whl",
+          "sha256": "9b2f11794e017ce340934e35de46181c46ef71ec75ea3d85dd75cd836761c01e",
+          "uploaded_at": "2026-09-18T13:17:42.526717Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-musllinux_1_2_riscv64.whl",
+          "sha256": "910ace140e3e7b7596898d083f37a8fe90c5c40684252ad4e682364b2cd3deba",
+          "uploaded_at": "2026-09-18T13:17:47.068539Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-musllinux_1_2_x86_64.whl",
+          "sha256": "37e517c146b185f9c0c6e8d0a0ebbdeeeb67896af28466e032bc810d0c7dc7a7",
+          "uploaded_at": "2026-09-18T13:17:52.410454Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp311-cp311-win_amd64.whl",
+          "sha256": "c7f92daa0d2a1c76f07264abddf8cbabd30152a2f09c3270e50f0c7efdf5dcac",
+          "uploaded_at": "2026-09-18T13:17:58.112075Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-macosx_10_13_x86_64.whl",
+          "sha256": "3f84dab25e0385692ee13274c68678377e0b1a70ab9d14e56264cbf61f60c62d",
+          "uploaded_at": "2026-09-18T13:18:05.138969Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-macosx_11_0_arm64.whl",
+          "sha256": "612382ac3ed13651c7fa44b5fee9fbf7baaa2ddbc6f500391672682c5f1df9e0",
+          "uploaded_at": "2026-09-18T13:18:12.830414Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "sha256": "366db6e97e66b37211475f20c4c1324a2dc0dd825e46d4e87f9d599304d276f9",
+          "uploaded_at": "2026-09-18T13:18:21.175087Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "1679a1cb93fbe5a6d1fd58d82cbddcc6fcb8c61446ba7cae6eb2a7b19bc585de",
+          "uploaded_at": "2026-09-18T13:18:27.071369Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "37d40450659401600e6d043ff586c89a71a69f33cbb8bcdba6cdb2569beecdbe",
+          "uploaded_at": "2026-09-18T13:18:33.794969Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl",
+          "sha256": "a5165300324efd5a772c48a88ab3a928513ab3979fca76553e62ee815f7b2b9c",
+          "uploaded_at": "2026-09-18T13:18:39.628259Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-musllinux_1_2_aarch64.whl",
+          "sha256": "d636338c8f21b0df2f84657b00bc34f9313f826ef93f1155bc743607e4a0c5eb",
+          "uploaded_at": "2026-09-18T13:18:45.023065Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-musllinux_1_2_ppc64le.whl",
+          "sha256": "a4ee3bdd5468a725f2a4d9aab8a74b6d0279f768c8b5d3aeb102c5307ff3d59c",
+          "uploaded_at": "2026-09-18T13:18:49.299166Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-musllinux_1_2_riscv64.whl",
+          "sha256": "289aadd6a00e151203c081f708348ec89f1e483c9b510ef4ac3981f847f01f79",
+          "uploaded_at": "2026-09-18T13:18:53.944376Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-musllinux_1_2_x86_64.whl",
+          "sha256": "f21d057f3e5f5491067e5b292498073b73847d48799b099803fef100775fcc52",
+          "uploaded_at": "2026-09-18T13:18:59.258322Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp312-cp312-win_amd64.whl",
+          "sha256": "e23a66a763fbe83fcc210bc77c27e5a5ea380ebf091c06f34d8561b695e5a40f",
+          "uploaded_at": "2026-09-18T13:19:06.503989Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-macosx_10_13_x86_64.whl",
+          "sha256": "5ad8f35e67cc16d1fad1fa8c88972dc9b3a3141ea67897399904edab96a301b6",
+          "uploaded_at": "2026-09-18T13:19:13.451748Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-macosx_11_0_arm64.whl",
+          "sha256": "373704aea331d3f3e3402c125a1543f5875e2986ebb54f97d1647942161f803f",
+          "uploaded_at": "2026-09-18T13:19:18.524279Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "sha256": "b82491019b884d62318b5f30706c3d7e6d4e5a6cb7eabcb3edc0c1b0fdaceae9",
+          "uploaded_at": "2026-09-18T13:19:24.418448Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "cec5ea900390897d0b46130f60bc2883bf19c314f9044235217c8be88b0ef269",
+          "uploaded_at": "2026-09-18T13:19:31.257334Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "98c02090d88f2ebc0ec1e8da538f77d225ce0fffecf372aa39262e62a1b054ef",
+          "uploaded_at": "2026-09-18T13:19:43.622938Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl",
+          "sha256": "ee2c4728c691245e24501fcd7a97b5b381236b9985bc445bba88cdce7d1b5784",
+          "uploaded_at": "2026-09-18T13:19:49.968145Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-musllinux_1_2_aarch64.whl",
+          "sha256": "f19cc87343eaa55255e76b31259a570072ac95d6ae82c92dd34b97691f5e49dc",
+          "uploaded_at": "2026-09-18T13:19:56.426280Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-musllinux_1_2_ppc64le.whl",
+          "sha256": "fdccb3a0e184b03e9baa673b15a809cf36c339c85dbda0ebc25a698846dfbee8",
+          "uploaded_at": "2026-09-18T13:20:04.681712Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-musllinux_1_2_riscv64.whl",
+          "sha256": "9892188bb15e5803beb51afe8a25add6b56be391a53058e8bca03b74e1e6bf22",
+          "uploaded_at": "2026-09-18T13:20:11.905459Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-musllinux_1_2_x86_64.whl",
+          "sha256": "3af90f92769d8cc10f94515ee7a0aef36ea85ca733a0ce22858f6e0953f41138",
+          "uploaded_at": "2026-09-18T13:20:17.949468Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp313-cp313-win_amd64.whl",
+          "sha256": "0ebfad5d131de9f892ae9e70cc7616207768b6714b66a52d4612b8ceaf78b372",
+          "uploaded_at": "2026-09-18T13:20:22.691628Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-macosx_10_15_x86_64.whl",
+          "sha256": "b3f75dee0f9afafabe4edc52c4842f1e1878ed2069bd05b22d6fe961e97e4dba",
+          "uploaded_at": "2026-09-18T13:20:29.278857Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-macosx_11_0_arm64.whl",
+          "sha256": "5927b7ba63153cd8e9862987290a2b783a5c590daf2a4ef981700cc3569166d4",
+          "uploaded_at": "2026-09-18T13:20:35.401854Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "sha256": "0bf08b749cc144f33b44a91b78e3f71c60eb07963746a0df5a100b36ce3d7475",
+          "uploaded_at": "2026-09-18T13:20:41.902223Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "31cd942c23f613276b81a6e6598cefa12960058b0f46e1e874b540c793f6aca5",
+          "uploaded_at": "2026-09-18T13:20:47.661404Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "4690cf67738f0e0e49a32aeec99bf0e4595cc2b4f1af984a4345394b1dcff91a",
+          "uploaded_at": "2026-09-18T13:20:56.874786Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl",
+          "sha256": "ad1c785e784cfd87e8436c6b7702f2d321fc39601bbaf29bc63a41a867091638",
+          "uploaded_at": "2026-09-18T13:21:04.155517Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-musllinux_1_2_aarch64.whl",
+          "sha256": "79a2a1c3449f6c3409427078ed1cec10de79f3023cb5f2504f0597d350ad46c7",
+          "uploaded_at": "2026-09-18T13:21:10.664103Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-musllinux_1_2_ppc64le.whl",
+          "sha256": "86147cb5d140341c3363fb5bacce31f8d5543902a46699d3c536b101bbceaf9e",
+          "uploaded_at": "2026-09-18T13:21:16.027382Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-musllinux_1_2_riscv64.whl",
+          "sha256": "7308c93cf0b19bbaf8e6ff0a6ad50d3c442385739245fe15a8d593bf841734a6",
+          "uploaded_at": "2026-09-18T13:21:21.587332Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-musllinux_1_2_x86_64.whl",
+          "sha256": "05a83ac9fd52b9bca7cb5ab04b3691163170bd16f53defa27216ea3aa07ee781",
+          "uploaded_at": "2026-09-18T13:21:27.630931Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp314-cp314-win_amd64.whl",
+          "sha256": "1fbd30e537dab22cafdf080608f10148fe2a5f3a61294ddb5113caac8a623840",
+          "uploaded_at": "2026-09-18T13:21:33.855505Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-macosx_10_15_x86_64.whl",
+          "sha256": "bf8c8481d026b85dd70c5fa7dde85b2333aed0b32a2602bcd38a900cbd78a49c",
+          "uploaded_at": "2026-09-18T13:21:41.437200Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-macosx_11_0_arm64.whl",
+          "sha256": "b599defe9190b17e9907c8b4d114c181e702c87efcd1b8a0ad40971cdcc4634a",
+          "uploaded_at": "2026-09-18T13:21:49.516078Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "sha256": "b8ece331509f7a975b90501f41e83ad905e4141753fedf3f2711b2bc70a8efbc",
+          "uploaded_at": "2026-09-18T13:21:58.089183Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "c61617eaae0112ca154da87ffb99b73af2c74067acac28dfb9a4455b019dff2e",
+          "uploaded_at": "2026-09-18T13:22:06.695998Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "c6d19cb4999d03231e8730a5f66c8f5068bc3b532677eb39dab0f600bff3e312",
+          "uploaded_at": "2026-09-18T13:22:13.088027Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl",
+          "sha256": "e8cbb54454dbf1bbf2ff08dd7693e8d94ac94b1a20f70f4b3b813d52ecb5cbc1",
+          "uploaded_at": "2026-09-18T13:22:17.959532Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-musllinux_1_2_aarch64.whl",
+          "sha256": "dc75da5a20951049f7b773145f998f69d181adad9c58a0ff36e0cf1d73c10e10",
+          "uploaded_at": "2026-09-18T13:22:26.719388Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-musllinux_1_2_ppc64le.whl",
+          "sha256": "955e3dd94da361e052d2e49acf591017158dc8f8ed2c8a42c2e3943403c39dc2",
+          "uploaded_at": "2026-09-18T13:22:33.042091Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-musllinux_1_2_riscv64.whl",
+          "sha256": "c7753871eb57e6a5f4646f6168590c6653073dea5e9e720b201c8875332df4c8",
+          "uploaded_at": "2026-09-18T13:22:38.334006Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-musllinux_1_2_x86_64.whl",
+          "sha256": "303732e798fe6729f8e12021b9c96107df8e95ecec4dd487c67b98ec2a59435e",
+          "uploaded_at": "2026-09-18T13:22:45.576012Z"
+        },
+        {
+          "filename": "psycopg_binary-3.3.6-cp315-cp315-win_amd64.whl",
+          "sha256": "2f122603f36050937982abf9668d8bc4769a79f7c93a65013b1c49f1cab7b56b",
+          "uploaded_at": "2026-09-18T13:22:51.283084Z"
+        }
+      ]
+    },
+    "valkey": {
+      "version": "6.1.1",
+      "source": "https://pypi.org/pypi/valkey/6.1.1/json",
+      "requires_python": ">=3.9",
+      "vulnerabilities": [],
+      "wheels": [
+        {
+          "filename": "valkey-6.1.1-py3-none-any.whl",
+          "sha256": "e2691541c6e1503b53c714ad9a35551ac9b7c0bbac93865f063dbc859a46de92",
+          "uploaded_at": "2025-08-11T06:41:08.769346Z"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "url": "https://api.github.com/repos/psycopg/psycopg/security-advisories",
+      "advisories": []
+    },
+    {
+      "url": "https://api.github.com/repos/valkey-io/valkey-py/security-advisories",
+      "advisories": []
+    },
+    {
+      "url": "https://api.github.com/repos/valkey-io/valkey/security-advisories",
+      "advisories": [
+        {
+          "id": "GHSA-jcj7-v34w-v9vv",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-jcj7-v34w-v9vv",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 9.1.1, <= 9.0.5, <= 8.1.9, <= 8.0.10",
+              "patched_versions": "9.1.2, 9.0.6, 8.1.10, 8.0.11",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-fq2f-crmw-q97r",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-fq2f-crmw-q97r",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "valkey",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<=9.1.1",
+              "patched_versions": "9.1.2",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-mvcj-73cw-22m4",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-mvcj-73cw-22m4",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 9.1.0, <= 9.0.4, <= 8.1.8, <= 8.0.9, <= 7.2.13",
+              "patched_versions": "9.1.1, 9.0.5, 8.1.9, 8.0.10, 7.2.14",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-53mc-f3m3-99vh",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-53mc-f3m3-99vh",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 9.1.0, <= 9.0.4, <= 8.1.8, <= 8.0.9, <= 7.2.13",
+              "patched_versions": "9.1.1, 9.0.5, 8.1.9, 8.0.10, 7.2.14",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-93p9-5vc7-8wgr",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-93p9-5vc7-8wgr",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "valkey-io",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "=>9.0.0, <= 9.0.2",
+              "patched_versions": "9.0.3",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-c677-q3wr-gggq",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-c677-q3wr-gggq",
+          "severity": "medium",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 9.0.2",
+              "patched_versions": "9.0.3, 8.1.6, 8.0.7, 7.2.12",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-p876-p7q5-hv2m",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-p876-p7q5-hv2m",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "valkey-io",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 9.0.1",
+              "patched_versions": "9.0.2, 8.1.6, 8.0.7, 7.2.12",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-9rfg-jx7v-52p6",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-9rfg-jx7v-52p6",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "Valkey"
+              },
+              "vulnerable_version_range": "7.2.10 and below, 8.0.5 and below, 8.1.3 and below",
+              "patched_versions": "7.2.11 and above, 8.0.6 and above, 8.1.4 and above",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-24vm-hv6g-2mj5",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-24vm-hv6g-2mj5",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "Valkey"
+              },
+              "vulnerable_version_range": ">= 7.2",
+              "patched_versions": "7.2.9, 8.0.3, 8.1.1",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-p4rf-xgfj-c2gq",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-p4rf-xgfj-c2gq",
+          "severity": "medium",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 7.2.6, 8.0.0",
+              "patched_versions": "7.2.7, 8.0.1",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-3864-2g29-c6pm",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-3864-2g29-c6pm",
+          "severity": "medium",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 7.2.6, 8.0.0",
+              "patched_versions": "7.2.7, 8.0.1",
+              "vulnerable_functions": []
+            }
+          ]
+        },
+        {
+          "id": "GHSA-cjwh-fcpr-v5r7",
+          "url": "https://github.com/valkey-io/valkey/security/advisories/GHSA-cjwh-fcpr-v5r7",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "",
+                "name": "valkey-server"
+              },
+              "vulnerable_version_range": "<= 7.2.6, 8.0.0",
+              "patched_versions": "7.2.7, 8.0.1",
+              "vulnerable_functions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://api.github.com/repos/docker/compose/security-advisories",
+      "advisories": [
+        {
+          "id": "GHSA-gv8h-7v7w-r22q",
+          "url": "https://github.com/docker/compose/security/advisories/GHSA-gv8h-7v7w-r22q",
+          "severity": "high",
+          "ranges": [
+            {
+              "package": {
+                "ecosystem": "docker-compose",
+                "name": "pkg/remote/oci.go"
+              },
+              "vulnerable_version_range": "< v2.40.2",
+              "patched_versions": "v2.40.2",
+              "vulnerable_functions": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Empty published advisories are not proof of complete vulnerability coverage.",
+    "Base image and transitive OS-library audit remains limited; no production suitability claim."
+  ],
+  "container_tool_verification": {
+    "date": "2026-10-08",
+    "buildx": {
+      "version": "0.38.0",
+      "release": "https://github.com/docker/buildx/releases/tag/v0.38.0",
+      "advisories_reviewed": [
+        "https://github.com/docker/buildx/security/advisories/GHSA-gwr2-q96m-6682",
+        "https://github.com/docker/buildx/security/advisories/GHSA-p54p-jq4x-rc28"
+      ],
+      "disposition": "Advisory descriptions identify fixes in 0.37.2; selected 0.38.0 is later. One machine-readable patched_versions field was blank; no inferred field fabricated."
+    },
+    "engine": {
+      "version": "29.8.2",
+      "notes": "https://docs.docker.com/engine/release-notes/29/#2982",
+      "installation_scope": "https://docs.docker.com/engine/install/binaries/",
+      "bundled_containerd": "2.3.6",
+      "advisories_reviewed": [
+        "https://github.com/moby/moby/security/advisories/GHSA-7cfq-22r6-qp73",
+        "https://github.com/containerd/containerd/security/advisories/GHSA-pg57-6jwg-q645"
+      ],
+      "limitation": "Pinned static binaries are for disposable testing; no automatic security updates or exhaustive transitive audit."
+    }
+  }
+}

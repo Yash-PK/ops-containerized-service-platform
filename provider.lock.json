@@ -1,0 +1,848 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-08",
+  "tool": {
+    "name": "lima",
+    "version": "2.2.1",
+    "release_url": "https://github.com/lima-vm/lima/releases/tag/v2.2.1",
+    "platforms": {
+      "Darwin-arm64": {
+        "url": "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Darwin-arm64.tar.gz",
+        "sha256": "9e9eacce88f37e185c346bad73aa6136f738d8cdf8c3bb23cd42b071824bc66e",
+        "member": "./bin/limactl",
+        "guestagent_member": "./share/lima/lima-guestagent.Linux-aarch64.gz",
+        "license_member": "./share/doc/lima/LICENSE",
+        "bytes": 38328082,
+        "verification": "Official GitHub release assets[].digest matched independently hashed complete archive; archive member paths inspected",
+        "files": {
+          "share/doc/lima/LICENSE": {
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "mode": "0644"
+          },
+          "share/doc/lima/MAINTAINERS.md": {
+            "sha256": "74fe542c14c6c39492586a9c823131dfdb04cb8acb2e790762ec62e4ac1c280c",
+            "mode": "0644"
+          },
+          "share/doc/lima/README.md": {
+            "sha256": "e96cd776e93872b74e493f308743db6ac1558507ebed5afa9b436f93f685274b",
+            "mode": "0644"
+          },
+          "share/doc/lima/ROADMAP.md": {
+            "sha256": "11be97b9d348f88d2ece3b6394cafb9f51aebb5049b60066174cf9c6624cab7c",
+            "mode": "0644"
+          },
+          "share/doc/lima/VERSION": {
+            "sha256": "51a76904570dfd01d966325f09cddf7ecc5f7608a65d6f4bf11d135bbb88ba0d",
+            "mode": "0644"
+          },
+          "share/doc/lima/ADOPTERS.md": {
+            "sha256": "b39b423cde5fb57ebcb45ff8461c7408275f6f6efb9a3fb7bdb889f50bbee5fa",
+            "mode": "0644"
+          },
+          "share/doc/lima/SECURITY.md": {
+            "sha256": "a636a2220abfc84f70694ef1ff676a5566ee0e6108f04c29cba9f8233b45f8e5",
+            "mode": "0644"
+          },
+          "share/lima/lima-guestagent.Linux-aarch64.gz": {
+            "sha256": "ed41b146a0aa9fb5e75d4b42d7af40c9ffb2cafadf4d8685762599e1960a72d7",
+            "mode": "0644"
+          },
+          "share/lima/lima-guestagent.Darwin-aarch64.gz": {
+            "sha256": "ac4d218d8d0509fb223ee8f162ef8f752e74e4904e891bae8bbd86038225a79b",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-25.10.yaml": {
+            "sha256": "78adc1ba19ce9036e77a4c29136ce92a9d20dc71479502f2bd94774b6315c0ab",
+            "mode": "0644"
+          },
+          "share/lima/templates/podman-rootful.yaml": {
+            "sha256": "577601b2b36cbe349813995c4127d35393c925140a8e70ab1f1ddb5189f1a537",
+            "mode": "0644"
+          },
+          "share/lima/templates/macos-15.yaml": {
+            "sha256": "b0ba9183b52c32515fbab9d372dbafa603f413358ced4bfffa84c0aa3ab41f88",
+            "mode": "0644"
+          },
+          "share/lima/templates/alpine-3.22.yaml": {
+            "sha256": "5c1a5d6a47e368fadacc9d1cbfdfa606ad89342302c89835426a8bcc97f8236c",
+            "mode": "0644"
+          },
+          "share/lima/templates/centos-stream-10.yaml": {
+            "sha256": "0562476a532ef74fb5d398018fa0a1138dced12dcdc9b408f17ea28878afc037",
+            "mode": "0644"
+          },
+          "share/lima/templates/fedora-43.yaml": {
+            "sha256": "9bf3bffd32fb4c0e5309df6533b6cdaccf54516748652a3546e1a019412b5152",
+            "mode": "0644"
+          },
+          "share/lima/templates/buildkit.yaml": {
+            "sha256": "944061c5bae23e75369981e386fb9f71d28cfead8d3272aa7d6087a6076c7865",
+            "mode": "0644"
+          },
+          "share/lima/templates/oraclelinux-9.yaml": {
+            "sha256": "907758c19aa8c71e711aa574f1b14abe1182f0e08c5c023214f697fdd23563f4",
+            "mode": "0644"
+          },
+          "share/lima/templates/oraclelinux-8.yaml": {
+            "sha256": "12ffe1b1463107031d8b3e1fd983e31269dbffaa395cd489bd0bdc26c6610f92",
+            "mode": "0644"
+          },
+          "share/lima/templates/fedora-42.yaml": {
+            "sha256": "5b931416da67ee214eb2e6627b247c500a0174478416bd74a903177e0ca2048e",
+            "mode": "0644"
+          },
+          "share/lima/templates/debian.yaml": {
+            "sha256": "62483b54fec217bae92ccf5e6939d0f079e127f3837b7cb45e84e0c3eb8b8d3e",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-20.04.yaml": {
+            "sha256": "3e75e01bebf917004785ee68401098bd74c993b63bb48dc9f76f261e6fa6ec00",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-24.10.yaml": {
+            "sha256": "d2b8923fb448a846e63dc6270917d48f53e3fe1944e2bc2ad015e2af09e75a6c",
+            "mode": "0644"
+          },
+          "share/lima/templates/rocky.yaml": {
+            "sha256": "8b329bb268d71b7b6290617c40f3646d505adad1cd03a42185dd486e41f25882",
+            "mode": "0644"
+          },
+          "share/lima/templates/alpine-3.23.yaml": {
+            "sha256": "a0e5edbbd40398db17b537c90e82a6dd06cac248b785cebfaa73fa15fcb3d258",
+            "mode": "0644"
+          },
+          "share/lima/templates/alpine.yaml": {
+            "sha256": "a0e5edbbd40398db17b537c90e82a6dd06cac248b785cebfaa73fa15fcb3d258",
+            "mode": "0644"
+          },
+          "share/lima/templates/homebrew-linux.yaml": {
+            "sha256": "86c382f1fb2f28454c67d6190ad6dcc3b3e2b194ee83a98ea744d4361b6e80f6",
+            "mode": "0644"
+          },
+          "share/lima/templates/k8s.yaml": {
+            "sha256": "e8e5fad851e54db51553b3a16d9f2bc52fcdd033d1c4dafa0b6d1fbf17e60183",
+            "mode": "0644"
+          },
+          "share/lima/templates/apptainer.yaml": {
+            "sha256": "586227f754b848513abea48a03da3aa3358c7a0fa09b547f0eb11f386da765ee",
+            "mode": "0644"
+          },
+          "share/lima/templates/opensuse-leap-15.yaml": {
+            "sha256": "ab5daf58ea54a5f9cb3b3f1738ba2e268a16f2ed1ff72490c05cae85d42617a6",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-22.04.yaml": {
+            "sha256": "fd2ce55fdb0462cd7ca67e6a1a60fc9f80d7dde700cca529ed44b6297a758b02",
+            "mode": "0644"
+          },
+          "share/lima/templates/opensuse-leap.yaml": {
+            "sha256": "e7057daa2f400fb0c87a39d8a590dd641961d9b7315f4672a1ae048b349f1021",
+            "mode": "0644"
+          },
+          "share/lima/templates/docker-rootful.yaml": {
+            "sha256": "30bd059d93bf3d3e3becb14c2e2e66aa22b3ed669f63cfa14c65d91b0b1804e8",
+            "mode": "0644"
+          },
+          "share/lima/templates/debian-11.yaml": {
+            "sha256": "c13a7e8dacefbb18fddfa700cb111f1a723ee44239a63bdda6570cbf82feb9d1",
+            "mode": "0644"
+          },
+          "share/lima/templates/almalinux.yaml": {
+            "sha256": "6d960b4284dd2633ec509e3b8ec66ac610d9617b1c7febda4c395f0501f49dc2",
+            "mode": "0644"
+          },
+          "share/lima/templates/faasd.yaml": {
+            "sha256": "bbb9c8e61fb9c7b18038c2d9871c6d1819db8ac6fa33df312c957fd56aa13217",
+            "mode": "0644"
+          },
+          "share/lima/templates/freebsd.yaml": {
+            "sha256": "705322efa6624a4849fea9b7c1eddc53220170c103177f05544b4605eacbe77f",
+            "mode": "0644"
+          },
+          "share/lima/templates/fedora-44.yaml": {
+            "sha256": "8f3232ec23d3186e7cefee02dcc48a357f1992b69845e4335f0e560742f834b9",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu.yaml": {
+            "sha256": "b01daf4e906f1ba71fca9a5f3b0c3f2b9a820ac71787409ef8eb0cc578b56036",
+            "mode": "0644"
+          },
+          "share/lima/templates/fedora.yaml": {
+            "sha256": "8f3232ec23d3186e7cefee02dcc48a357f1992b69845e4335f0e560742f834b9",
+            "mode": "0644"
+          },
+          "share/lima/templates/freebsd-15.yaml": {
+            "sha256": "705322efa6624a4849fea9b7c1eddc53220170c103177f05544b4605eacbe77f",
+            "mode": "0644"
+          },
+          "share/lima/templates/README.md": {
+            "sha256": "371bc5c825d55951807fb609f0256a841d2cf4c5c49c7195e1a6434f8cbd9418",
+            "mode": "0644"
+          },
+          "share/lima/templates/macos-27.yaml": {
+            "sha256": "03bfe24a484b1e8672fdcdd4083dce7a718a2506887359f4c3334bfae456983a",
+            "mode": "0644"
+          },
+          "share/lima/templates/almalinux-8.yaml": {
+            "sha256": "f231496dfe1cd12ee3c5ea1832fd37f1a1185bda028d51b310c61d47c8970809",
+            "mode": "0644"
+          },
+          "share/lima/templates/k0s.yaml": {
+            "sha256": "682e2f6f1404d34969afb5d962c85951e9db21c7728d93afb75e393166d37817",
+            "mode": "0644"
+          },
+          "share/lima/templates/almalinux-10.yaml": {
+            "sha256": "6d960b4284dd2633ec509e3b8ec66ac610d9617b1c7febda4c395f0501f49dc2",
+            "mode": "0644"
+          },
+          "share/lima/templates/archlinux.yaml": {
+            "sha256": "dc37d10fbddba63feb1cab22306981105c8804914f3a45081a6a0cf94877897e",
+            "mode": "0644"
+          },
+          "share/lima/templates/debian-13.yaml": {
+            "sha256": "62483b54fec217bae92ccf5e6939d0f079e127f3837b7cb45e84e0c3eb8b8d3e",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-26.04.yaml": {
+            "sha256": "b01daf4e906f1ba71fca9a5f3b0c3f2b9a820ac71787409ef8eb0cc578b56036",
+            "mode": "0644"
+          },
+          "share/lima/templates/rocky-8.yaml": {
+            "sha256": "ec9be57ac7895490589d8d4d571f122947e92e1f40a0faa17a2d405630d69183",
+            "mode": "0644"
+          },
+          "share/lima/templates/rocky-9.yaml": {
+            "sha256": "46f68996054fc6d39604ead72f89dc42aee37fd749af877d7771d77e1ecb76a7",
+            "mode": "0644"
+          },
+          "share/lima/templates/opensuse-leap-16.yaml": {
+            "sha256": "e7057daa2f400fb0c87a39d8a590dd641961d9b7315f4672a1ae048b349f1021",
+            "mode": "0644"
+          },
+          "share/lima/templates/opensuse.yaml": {
+            "sha256": "e7057daa2f400fb0c87a39d8a590dd641961d9b7315f4672a1ae048b349f1021",
+            "mode": "0644"
+          },
+          "share/lima/templates/debian-12.yaml": {
+            "sha256": "353b31ff0eb91caddbc1c0e1c5ab349000978a95519e7b3ff92eb5c0a8f99c87",
+            "mode": "0644"
+          },
+          "share/lima/templates/alpine-iso.yaml": {
+            "sha256": "b6b7b5fd328e11d66deeead98c2532093f7901e5f551326f0e29227c9a2473ba",
+            "mode": "0644"
+          },
+          "share/lima/templates/oraclelinux-10.yaml": {
+            "sha256": "6113d9b481846a5ea3b5dbdb7dab8949ab76dd0c0a2465fba156220e19a708fb",
+            "mode": "0644"
+          },
+          "share/lima/templates/windows.yaml": {
+            "sha256": "dca7eb7bb007cbcdbc797966154f9a030e0f8a6c3dea64bac9c33dc1774badc9",
+            "mode": "0644"
+          },
+          "share/lima/templates/podman.yaml": {
+            "sha256": "c1eda96ec59e1144e6ed6fa893e9f1a703280a1ea2d71a80ad5e280e89c313bc",
+            "mode": "0644"
+          },
+          "share/lima/templates/almalinux-9.yaml": {
+            "sha256": "6126b2957d549f5560c7c9defab1130401b5c348122bf1d6fa7c9b93a3e3f35c",
+            "mode": "0644"
+          },
+          "share/lima/templates/docker.yaml": {
+            "sha256": "4577486ed36c6b5ac58e2cb6262a1e83e8a654fdaa702a0ac73763f132e103f5",
+            "mode": "0644"
+          },
+          "share/lima/templates/centos-stream.yaml": {
+            "sha256": "b982332554617169ada0c00e7b025adf0951cc8a971dc8a35ad22e948efa1c56",
+            "mode": "0644"
+          },
+          "share/lima/templates/macos-26.yaml": {
+            "sha256": "bbe8ed38edcbd96fc50de54b28d735b4476acd01d41c6dc422d1eaf222f6ce29",
+            "mode": "0644"
+          },
+          "share/lima/templates/k3s.yaml": {
+            "sha256": "506220f1e21c7dfbc80bfb1b63d273dcc707fe5adada2412d0146cb903b7cbd1",
+            "mode": "0644"
+          },
+          "share/lima/templates/rocky-10.yaml": {
+            "sha256": "8b329bb268d71b7b6290617c40f3646d505adad1cd03a42185dd486e41f25882",
+            "mode": "0644"
+          },
+          "share/lima/templates/centos-stream-9.yaml": {
+            "sha256": "b982332554617169ada0c00e7b025adf0951cc8a971dc8a35ad22e948efa1c56",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-25.04.yaml": {
+            "sha256": "56e3eb602b5590d047bb32cafa30bb3fd9aba077eaab58b333ad130293d3080b",
+            "mode": "0644"
+          },
+          "share/lima/templates/windows-2025.yaml": {
+            "sha256": "d62bf545d16c3f0bd6d09a8f71337148277feda87867febc06ba951fd376e9c6",
+            "mode": "0644"
+          },
+          "share/lima/templates/apptainer-rootful.yaml": {
+            "sha256": "3039025efb6101f4967b8702fa29321ae17815e8a3de31a4e79b7264ca0cae0f",
+            "mode": "0644"
+          },
+          "share/lima/templates/fedora-41.yaml": {
+            "sha256": "711c8f8bce83ce4e824c8618f62c97f8b8077d591cf2bf72cab54dcc961e311b",
+            "mode": "0644"
+          },
+          "share/lima/templates/homebrew-macos.yaml": {
+            "sha256": "985a8a99f0d87fc9fd420322d65f7b55df87c2c2d64d83f44202dfc85d06309d",
+            "mode": "0644"
+          },
+          "share/lima/templates/linuxbrew.yaml": {
+            "sha256": "86c382f1fb2f28454c67d6190ad6dcc3b3e2b194ee83a98ea744d4361b6e80f6",
+            "mode": "0644"
+          },
+          "share/lima/templates/oraclelinux.yaml": {
+            "sha256": "6113d9b481846a5ea3b5dbdb7dab8949ab76dd0c0a2465fba156220e19a708fb",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-lts.yaml": {
+            "sha256": "b01daf4e906f1ba71fca9a5f3b0c3f2b9a820ac71787409ef8eb0cc578b56036",
+            "mode": "0644"
+          },
+          "share/lima/templates/windows-11.yaml": {
+            "sha256": "dca7eb7bb007cbcdbc797966154f9a030e0f8a6c3dea64bac9c33dc1774badc9",
+            "mode": "0644"
+          },
+          "share/lima/templates/default.yaml": {
+            "sha256": "9b36702315b0716108a64631faf62a664d94f8f4a57acf3174f80022b308f5a3",
+            "mode": "0644"
+          },
+          "share/lima/templates/alpine-3.21.yaml": {
+            "sha256": "815d8456421d7b7b298a5dd732a21e0934ec8315d03bfe4cf32a5930f1325530",
+            "mode": "0644"
+          },
+          "share/lima/templates/ubuntu-24.04.yaml": {
+            "sha256": "84ec4177f7f8ddd4ebb12ee23e50f556ec70ce71f753cb0c6c790cd5d05c7b72",
+            "mode": "0644"
+          },
+          "share/lima/templates/macos.yaml": {
+            "sha256": "03bfe24a484b1e8672fdcdd4083dce7a718a2506887359f4c3334bfae456983a",
+            "mode": "0644"
+          },
+          "share/lima/templates/_default/mounts.yaml": {
+            "sha256": "96e29b599c7a2277eb1b1f5e34e1a9527f03c649916bae3038e66049635ce647",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-25.10.yaml": {
+            "sha256": "fdd85fb08b33fc6ebcb3d7c5a60a7bccfb911b46cef1654243aa5b436d847914",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/macos-15.yaml": {
+            "sha256": "902a4675924f35eb4ee9c4fb5165de93c154c98a2113aa305c520bc2838428ae",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/alpine-3.22.yaml": {
+            "sha256": "50de1b89aa3a6c91a588407547b76819271cb03a7591953f9debcaee8153d0ce",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/centos-stream-10.yaml": {
+            "sha256": "48ec015db12f3537d8e6e9201254ec0094596a74e45ad46f1c5169b0c455ecb1",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/fedora-43.yaml": {
+            "sha256": "598858ec53ddeb4227956f20fffe2bc5a5d14a382983ee4b76173c272efc6505",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/oraclelinux-9.yaml": {
+            "sha256": "6134ef5b6ca5bfda4b01b6088a732a57d36101ebe7ecb86db7a2287d0f88f4a5",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/oraclelinux-8.yaml": {
+            "sha256": "0aac1503ccb588d7cdc9ffdffb5e8d6cabee356e43732ec9697f5ae30986ca28",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/fedora-42.yaml": {
+            "sha256": "17c5b4a85f67c982163a1962203484bc8787116db290f7fe34c14b4e3837f052",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-20.04.yaml": {
+            "sha256": "08973a1184129c05865e9d227b73c05f0af7961e565dd41a0fb8cf1a4fcb2164",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-24.10.yaml": {
+            "sha256": "c520c8ecd33996a257f5e586d0bc84816a27f9fc004ce5f18548dca44eff1f7d",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/alpine-3.23.yaml": {
+            "sha256": "2ee39eac2b8e2ca17733968cbe8940c834c3288e6bc0075a517072e1bd8c0e63",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/opensuse-leap-15.yaml": {
+            "sha256": "598c299022cd3d45fde3259e7a4d5ea3595cb21380b87218f397930a763b09db",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-22.04.yaml": {
+            "sha256": "8f9224b4b9e0e1fe891e886368c0ec392d81e77b617b0e897b71a85e6650d76f",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/opensuse-leap.yaml": {
+            "sha256": "7792005012f9d85b4e1b0ca9c8ca332041ee34273e5d0906e95dfcdf09f6ac99",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/debian-11.yaml": {
+            "sha256": "2b126eda475b4a553f4f19a0300908d63abf7601f3e2eb247bf0351fcc9a3f43",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/freebsd.yaml": {
+            "sha256": "baeabbee290c3d4ff9e30f6f651159404480f46252036a006739209153e40a2f",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/fedora-44.yaml": {
+            "sha256": "20e5585a589803d4be686a682bf67c484a9c1b5178c394a96a7443f64000ab1b",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu.yaml": {
+            "sha256": "9470033b52b5f7bcc4ca3dc0daddd853e5e6362becef65b63fad5b4256d1e4c9",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/fedora.yaml": {
+            "sha256": "20e5585a589803d4be686a682bf67c484a9c1b5178c394a96a7443f64000ab1b",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/freebsd-15.yaml": {
+            "sha256": "baeabbee290c3d4ff9e30f6f651159404480f46252036a006739209153e40a2f",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/macos-27.yaml": {
+            "sha256": "4ebe1fdc7c59ec7fee56b559655d207c9431fa6d47acb9ea05ebbec23306e42c",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/almalinux-8.yaml": {
+            "sha256": "8a10916067a10df728eb8fab38080136e758867f6b84c0bb717992dfd72edbe0",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/almalinux-10.yaml": {
+            "sha256": "d21bcc9be53505729fc2ab477e415c9914eb8dcb7a6c0014c32f9c192948f644",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/archlinux.yaml": {
+            "sha256": "d5a188eb132731606dbad3cc1827dd2a36bf9c33ed71491f0089b7e16d5668f3",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/debian-13.yaml": {
+            "sha256": "7f39ca32e4867f4ef64e7b8fe5214590ad384d3f2640e36e106686d5b29dd996",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-26.04.yaml": {
+            "sha256": "9470033b52b5f7bcc4ca3dc0daddd853e5e6362becef65b63fad5b4256d1e4c9",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/rocky-8.yaml": {
+            "sha256": "97e22263db95da9ea02c6da943db2126af5876ff0f75c0b655fc8dba94d36764",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/rocky-9.yaml": {
+            "sha256": "5e094249ce479df8bf0115ba71e14cfc5c56d3d07aa01cfd53eccdba766739ba",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/opensuse-leap-16.yaml": {
+            "sha256": "7792005012f9d85b4e1b0ca9c8ca332041ee34273e5d0906e95dfcdf09f6ac99",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/debian-12.yaml": {
+            "sha256": "1b8c60de28408f2f8bc306684e1a2b1670654b606e7acb5c71a62c825cf3524e",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/alpine-iso.yaml": {
+            "sha256": "ed168816ab7b7390df97b316e2e4599458c103cd8130a5227619d5902b86d57d",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/oraclelinux-10.yaml": {
+            "sha256": "8bcc04100ebae6e63ff0735f4c3717678a777043779246108bc494663a508776",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/almalinux-9.yaml": {
+            "sha256": "8bb968adbd45a51965971e0125ea19c6f07404525db02c324922d461066df5b0",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/macos-26.yaml": {
+            "sha256": "b5f330f87e1636ef33c2bd9ab3e91bb6b887477ac3bee31a56646fc9dcb5402a",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/almalinux-kitten-10.yaml": {
+            "sha256": "67b8ad4381d670ef677441a3d3160cd411e1770130b66426d9b6dfeaee87493c",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/rocky-10.yaml": {
+            "sha256": "0abc23e59d0fafb239239c2cbd3b5c8723f8a8896517dc21760e45a8aa5869d9",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/centos-stream-9.yaml": {
+            "sha256": "a65fa0da05cb991bc1133743d24d0faa9201bc425ee8bf9b727bcff2c10c7a36",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-25.04.yaml": {
+            "sha256": "20c004c346e9de7294747916b62786e236b30a5ac22769b928cbdb4f3e0a1c11",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/fedora-41.yaml": {
+            "sha256": "f5ae388da0f372d6617e4a1eda9be2a08d638801e0ac3da5a6bdb4ebe77ab348",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-lts.yaml": {
+            "sha256": "9470033b52b5f7bcc4ca3dc0daddd853e5e6362becef65b63fad5b4256d1e4c9",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/alpine-3.21.yaml": {
+            "sha256": "7ff078869f4e3d972d19d1cbdd3437e6f9c6be585f7a21e396c1e3bd84b7ac23",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/ubuntu-24.04.yaml": {
+            "sha256": "f523ea95c37d54ae51f4704337cd8d5ad56f5448da2765806ce049588d676ad4",
+            "mode": "0644"
+          },
+          "share/lima/templates/_images/macos.yaml": {
+            "sha256": "4ebe1fdc7c59ec7fee56b559655d207c9431fa6d47acb9ea05ebbec23306e42c",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/gentoo.yaml": {
+            "sha256": "d04237a3af3ca93498f19f1dffad1b48a4677772e78c6fd683243990219bab7d",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/almalinux-kitten.yaml": {
+            "sha256": "dfd17c245143afcb04453c833f8fa37fda9e0607e8a64a9a465c2f54df3393b8",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/ubuntu-26.10.yaml": {
+            "sha256": "db8b63f5f4117a2bab89ed3a0b36652f1ab4476c9be7e79ece47ed50412e8a69",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/freebsd-16.yaml": {
+            "sha256": "b039863f185b0ef2f77dba371829a0ba4d799efc00be7f1c66a7838f2fc6e4dc",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/opensuse-tumbleweed.yaml": {
+            "sha256": "dd2eb0adf5222fe837738ae1c2f8380cedeb4cc6eeabee9dc2fecaf48ab43ac1",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/vnc.yaml": {
+            "sha256": "08f26461b82906b7a163904acdb09953ad27118f649d7a3e27492c0c9a253645",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/wsl2.yaml": {
+            "sha256": "e01a2828332dd204d04d7853968e80255a39e1f9df00e6532b26229ba871de4d",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/freebsd-current.yaml": {
+            "sha256": "b039863f185b0ef2f77dba371829a0ba4d799efc00be7f1c66a7838f2fc6e4dc",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/u7s.yaml": {
+            "sha256": "6c95026344c83191e905c4b1ecec8b9b8af44a0d2f7af533ee5aa562173aee79",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/alsa.yaml": {
+            "sha256": "3d8f2b7567be9bb2c5658033a98cb6f0ff496bec270dafc27ecc8fa5b8721e97",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/almalinux-kitten-10.yaml": {
+            "sha256": "dfd17c245143afcb04453c833f8fa37fda9e0607e8a64a9a465c2f54df3393b8",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/ubuntu-next.yaml": {
+            "sha256": "db8b63f5f4117a2bab89ed3a0b36652f1ab4476c9be7e79ece47ed50412e8a69",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/debian-sid.yaml": {
+            "sha256": "d460cf0799c390e98140e25393e7a75f02cf909a5c8c1871e157844a5e0decd5",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/fedora-rawhide.yaml": {
+            "sha256": "e188937906f382a21fce08ff14d0df0734ebac188e44bf1ad6b3884bf3ac34d2",
+            "mode": "0644"
+          },
+          "share/lima/templates/experimental/rke2.yaml": {
+            "sha256": "4726d53971f993c3b4009f245afc735cfa79dcdf490e269c561854d3929fc55d",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-network.1": {
+            "sha256": "9f700325010f0bab016845d1db8dc9af91bb55eb18c9c4242adae9cc4872531e",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-restart.1": {
+            "sha256": "4079bbc7f3fd94f5656b682756a1e54ed206ee532f841b36d4b26f35e6dbe432",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-snapshot-apply.1": {
+            "sha256": "093117d98a224854d9fdb125b32ffde15b824017ef9996959fa9f8f871d2c8c1",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-disk-import.1": {
+            "sha256": "39451fc8ca5f02d02cacf250b7f1408f698e81633277cfc37b0c44c38d1fc6f1",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-completion-powershell.1": {
+            "sha256": "188d8aba93a16a2585d37ad61cd3f577746f42946c01fd8e02aeeef14d8d9166",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-create.1": {
+            "sha256": "f7264364d8acd5af14f8878a6b1d163ce7ef893062aa38b8082f31d12ba2cc04",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-sudoers.1": {
+            "sha256": "2b13257f3ec2d9f5d4da8388fbc14791b8e1882db37e35c7bc0a2d10ae3c6572",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-prune.1": {
+            "sha256": "39091432169752e4ee056009a27902c913ba80c06ebd9b84e0f22c1356546294",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-protect.1": {
+            "sha256": "8e6f180d61012f808be625faebec7c9f5bdfdfc615b226d89812218058333ff1",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-template-yq.1": {
+            "sha256": "48531125b3266c4de88984c2c7bcd4d48622e8888fdfe70166fbc2b29f43fbd1",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-autostart-disable.1": {
+            "sha256": "264ed26a4341681403dea956500178f7b49ea0ee178a68756e4a7c16dab317e4",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-shell.1": {
+            "sha256": "34e51648590754a7b6187f5b7d11915b70bb9c5bef79983a9b5fcc8d5fa29653",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-disk-create.1": {
+            "sha256": "0d4c9a469ae77614d108858cf09a40832556a0dc57513c0a03c1309eea7e2aa3",
+            "mode": "0644"
+          },
+          "share/man/man1/lima.1": {
+            "sha256": "0cc36304307e231f05d00294c4e9ad19c056afe38315127a650973c3a99e90ce",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-list.1": {
+            "sha256": "c5227ef56980bdbcb220ecf50e105ea416488b12286a0176b17bb3a110ad35ea",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-completion-bash.1": {
+            "sha256": "82f9703c1cc097f92f8d3ebcb8eabf5650f349ac4c3a2dc2bec3615af1986dee",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-show-ssh.1": {
+            "sha256": "857ae24142948b567e4c4cb868538c7de0156071e1a81fed90ad8d08f8cdab05",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-template-url.1": {
+            "sha256": "1433a1cc183903dfbb8a24e20c3ea9bb1372f7720a4966b9edf96b02b18c6650",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-screenshot.1": {
+            "sha256": "ed69926412daea766c86a59889d0c1402d0f49cccbccd0cfd2f71a6b872f2880",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-copy.1": {
+            "sha256": "ffd343c160cfeb0dc569e70e2209a51a3ebb3177f4425ad002d24038c380020f",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-start.1": {
+            "sha256": "47a5d4973aa4f8eb114327230875d1c1091c4b484d3b97b096ad3579828eeea6",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-disk-unlock.1": {
+            "sha256": "5dab343b4e447231f1e50aa0b168c875eb07dd79e0668a3639367bea47e5c17d",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-disk-resize.1": {
+            "sha256": "0d3719a51517f8a0e3c9d097dc992ba54f10201544f77d0f7d108352a281e511",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-rename.1": {
+            "sha256": "8ca10d71452e989226cdc12dd684c7f13c6210753e6e1d3ad53b3f236dd4722b",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-snapshot-delete.1": {
+            "sha256": "32d7d88dde0b62b1f56641425572c9e43329a79613c2fd979338da04198cb409",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-network-create.1": {
+            "sha256": "e9abca5ddbd2c30ef3bb93b6bc15b278934373b7c65653e089f226cd2a8f1bbe",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-completion-fish.1": {
+            "sha256": "7a2abac98b72af5b7b55236e35ac0541cd7bb5cade71d273459f101726244f55",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-info.1": {
+            "sha256": "e6d3b91d1612bf0e2177fd88da6ab1b55d2c8e352d3e6cb1dd65a6eda6903763",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-completion.1": {
+            "sha256": "f41376fe8132e8955beb63fc6e7ead7a7e16ec7145a8404eb901d3f93f162148",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-clone.1": {
+            "sha256": "7a8a2afc557fd070d9e0524c4c41cede6f268cd8142adbba15137bc657628c54",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-template-copy.1": {
+            "sha256": "0950549bb5fd188921ed9214d4fa9655799fe32fe517939434329af80f8e8c5c",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl.1": {
+            "sha256": "0d86f267fedb1d620a072cd2b708fb2e0e2ccb66067647dd5910604b064eadd8",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-disk-delete.1": {
+            "sha256": "c7b809fe30191a9539d5ee2ae4f599d36f72d989ac205b6681dd17aedb6b5eb3",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-template-validate.1": {
+            "sha256": "76386a58c0c14f48885a36b826ef044bb85f4db8199b6a5b04cc45fd28d2cd81",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-autostart.1": {
+            "sha256": "190afa27a55ecf02cb7a6385184085de57665a075e96a95995e588c95fb28359",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-disk-list.1": {
+            "sha256": "c9daef07b47f59c6213d2f35b4bea9fc67e674345860c76bbea50a8f320c0fca",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-completion-zsh.1": {
+            "sha256": "bc8b5540d3915027af39f860af2369ac1bce11bee34d59d12301d8b6ee9f3842",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-stop.1": {
+            "sha256": "bab561b52a4c6ab728f5eb5d321141e6fa69b01cc939a5a8f9b8a07a43c8c4fd",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-autostart-enable.1": {
+            "sha256": "6aefea5e2f15ab5879056ac0b7fc1aed313ae89d202bbee8c40940a333da820e",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-network-list.1": {
+            "sha256": "8aada40e3f28c9cf71223aa2e12090a4c662ff31840bbe3cac25baa026029a71",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-mcp.1": {
+            "sha256": "c230deb1ca322798c2c63316b4889caa6add076528f04e7ac92fce9233c132e2",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-delete.1": {
+            "sha256": "1d9d3cb9b1f632a28f16f1feecb40312c4ec0ff281fb5d1f0d7ac01d494cefd4",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-edit.1": {
+            "sha256": "86886b90c43c03b2125205c42916639c96e04ff982d1fb25e50066ab02b8dd8a",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-validate.1": {
+            "sha256": "cc1f1167bcd6395725e157a2cb5d7cf7ba34f09b1919c237ea4cb35bd4da171a",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-tunnel.1": {
+            "sha256": "3c6152fe50a04ad58bd5693f08fa483b9cb32305cf294e1b70592b4954ab1cad",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-template.1": {
+            "sha256": "a94682b3f54c6515570e2dfb58bb3610f542eb09138c6ef767a73708a6e85458",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-disk.1": {
+            "sha256": "adb6671c3fb7aa548765294ac97f7cb31cc7db65ec3df534855f8dce6959c564",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-snapshot-create.1": {
+            "sha256": "ee20824c9540327cd7c6dd27cfc0d72a1e56bed496ab4a1a2add82c66260a989",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-snapshot.1": {
+            "sha256": "0ed3d23129e09943f9270eaa89d8253a4705bc994715530c643a2600b9869b2d",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-network-delete.1": {
+            "sha256": "9f67a17129c1de733c633cc0cde60bc0571f86cbea08f0370b44fbabbbb320fd",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-watch.1": {
+            "sha256": "8ce0f0251854a41a3826da3d379114a62e6bf2e75bb25a7a8ca0bf2557f4519a",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-factory-reset.1": {
+            "sha256": "1857617946d562e9dc291c5d1f05203d16bb2343b837c5554df35c5603f753f5",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-snapshot-list.1": {
+            "sha256": "ecaa4a66bef3c18f7af3f3b9a868963c045b7089faf643a4e388897e766ba580",
+            "mode": "0644"
+          },
+          "share/man/man1/limactl-unprotect.1": {
+            "sha256": "1aa5ac0fd0fd84dab62aa122d0b02c548dc75e4f27c2b0ee9fdb2359c3204019",
+            "mode": "0644"
+          },
+          "libexec/lima/limactl-mcp": {
+            "sha256": "a87b71b47e105d42dd7a721bfbcc17bfb662dcd5598c4b40ce2c1ece95efccec",
+            "mode": "0755"
+          },
+          "libexec/lima/lima-driver-krunkit": {
+            "sha256": "a28030461823e6bb370fdfe028559ad7fd8d868bda2f0c3319c77cfc0d0b60c9",
+            "mode": "0755"
+          },
+          "libexec/lima/limactl-url-fedora-rawhide": {
+            "sha256": "aaf3ba78520fffb520613d569a9fe9f1842c300b0d1f8d7ed559856e4f5cd220",
+            "mode": "0755"
+          },
+          "bin/docker.lima": {
+            "sha256": "b27aa268cf41a6f9348f99da9376612a9d53ae31c0bceaef151b0b735569a367",
+            "mode": "0755"
+          },
+          "bin/lima": {
+            "sha256": "88aeac60dbcb69ec675c0ce9af24d5f66255f4899fa73320402db57925500832",
+            "mode": "0755"
+          },
+          "bin/podman.lima": {
+            "sha256": "be4d6158749e51bb6325de2f0c81ce29fea1e89a3c8668272e092512f74ed213",
+            "mode": "0755"
+          },
+          "bin/nerdctl.lima": {
+            "sha256": "3034baf0798ca7a9ed0cc98328658ba00785aff4a1f33055f02f8081a32ee70b",
+            "mode": "0755"
+          },
+          "bin/kubectl.lima": {
+            "sha256": "1c8da7b909449d8e14c737cc8d3e799018ce10a83c75ca2499f63d266c5c8199",
+            "mode": "0755"
+          },
+          "bin/limactl": {
+            "sha256": "6d32fb0f880c0ea750434f2ac855a3f2129126752a301ce4d88adbd2fa599e1e",
+            "mode": "0755"
+          },
+          "bin/apptainer.lima": {
+            "sha256": "317231aa6c7c606032091c895a5ebe6c9cd3c21bdce39c80ca916a63b41529d1",
+            "mode": "0755"
+          }
+        }
+      }
+    }
+  },
+  "images": {
+    "ubuntu": {
+      "name": "Ubuntu Server 24.04 LTS cloud image",
+      "version": "24.04-20260926",
+      "arch": "aarch64",
+      "url": "https://cloud-images.ubuntu.com/releases/noble/release-20260926/ubuntu-24.04-server-cloudimg-arm64.img",
+      "sha256": "1d6bffe64b848468ac97f821d369a4846d983de1800ccf6b5ec8853e85cefc55",
+      "checksum_url": "https://cloud-images.ubuntu.com/releases/noble/release-20260926/SHA256SUMS",
+      "bytes": 620224512,
+      "verification": "Official SHA256SUMS over TLS and image HEAD 200; complete image hash and VM boot must be validated during bootstrap/integration"
+    },
+    "alma": {
+      "name": "AlmaLinux 9.8 GenericCloud",
+      "version": "9.8-20261005",
+      "arch": "aarch64",
+      "url": "https://repo.almalinux.org/almalinux/9.8/cloud/aarch64/images/AlmaLinux-9-GenericCloud-9.8-20261005.aarch64.qcow2",
+      "sha256": "15cf8257cb3c293268898309fe9f7d70e893b1eddff99bac9d7e53a2155d00ce",
+      "checksum_url": "https://repo.almalinux.org/almalinux/9.8/cloud/aarch64/images/CHECKSUM",
+      "bytes": 483262464,
+      "verification": "Official CHECKSUM over TLS and image HEAD 200; complete image hash and VM boot must be validated during bootstrap/integration"
+    }
+  },
+  "supported_profiles": [
+    "ubuntu"
+  ],
+  "compatibility_note": "Alma image entry retained only because the unchanged pinned provider validates both records. This project supports Ubuntu only."
+}

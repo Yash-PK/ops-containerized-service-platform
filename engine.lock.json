@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-08",
+  "platform": "linux-arm64",
+  "assets": {
+    "engine": {
+      "url": "https://download.docker.com/linux/static/stable/aarch64/docker-29.8.2.tgz",
+      "version": "29.8.2",
+      "sha256": "76a624e4a8e5da654d1150e808175125efb5a6f1b6aa1cbd9caee18f51047a50",
+      "bytes": 77262121,
+      "verification": "SHA256 computed from official Docker HTTPS static download; no separately signed checksum claim"
+    },
+    "compose": {
+      "url": "https://github.com/docker/compose/releases/download/v5.6.0/docker-compose-linux-aarch64",
+      "version": "5.6.0",
+      "sha256": "733ec76717ceb59052a9609b9dadfb523b2df8eab57a54212872d10a58078ea2",
+      "verification": "GitHub official release asset digest; downloaded bytes must match",
+      "bytes": 30538254
+    },
+    "buildx": {
+      "url": "https://github.com/docker/buildx/releases/download/v0.38.0/buildx-v0.38.0.linux-arm64",
+      "version": "0.38.0",
+      "sha256": "38e890e1a162bfdbf32fbe91404991dc4fc28e55b0de901b34374a061bab4d2c",
+      "verification": "GitHub official release asset digest; downloaded bytes must match",
+      "bytes": 63766690
+    }
+  }
+}

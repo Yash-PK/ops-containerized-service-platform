@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-08",
+  "verification": "Rechecked every pinned asset digest against official GitHub release metadata; originally fully downloaded and SHA-256 verified in the released fleet project.",
+  "tools": {
+    "shellcheck": {
+      "version": "0.11.0",
+      "release_url": "https://github.com/koalaman/shellcheck/releases/tag/v0.11.0",
+      "platforms": {
+        "darwin-arm64": {
+          "url": "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.aarch64.tar.gz",
+          "sha256": "339b930feb1ea764467013cc1f72d09cd6b869ebf1013296ba9055ab2ffbd26f",
+          "member": "shellcheck-v0.11.0/shellcheck",
+          "license_member": "shellcheck-v0.11.0/LICENSE.txt"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.gz",
+          "sha256": "b7af85e41cc99489dcc21d66c6d5f3685138f06d34651e6d34b42ec6d54fe6f6",
+          "member": "shellcheck-v0.11.0/shellcheck",
+          "license_member": "shellcheck-v0.11.0/LICENSE.txt"
+        },
+        "linux-arm64": {
+          "url": "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.aarch64.tar.gz",
+          "sha256": "68a8133197a50beb8803f8d42f9908d1af1c5540d4bb05fdfca8c1fa47decefc",
+          "member": "shellcheck-v0.11.0/shellcheck",
+          "license_member": "shellcheck-v0.11.0/LICENSE.txt"
+        }
+      }
+    },
+    "shfmt": {
+      "version": "3.14.1",
+      "release_url": "https://github.com/mvdan/sh/releases/tag/v3.14.1",
+      "platforms": {
+        "darwin-arm64": {
+          "url": "https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_darwin_arm64",
+          "sha256": "b7c872db63553ccffc7253aba3ed7d4885a27d83f1ba567b1138c6315a5847e5",
+          "member": null
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_linux_amd64",
+          "sha256": "76e77641faa025814b77f153b29796b8e6fa2fca03e0c76a691608b86c7ea7bf",
+          "member": null
+        },
+        "linux-arm64": {
+          "url": "https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_linux_arm64",
+          "sha256": "5f2db09dae91fca848f7adbdd014632e921a383863a2ad7e0450ad3aba0c6489",
+          "member": null
+        }
+      }
+    },
+    "actionlint": {
+      "version": "1.7.12",
+      "release_url": "https://github.com/rhysd/actionlint/releases/tag/v1.7.12",
+      "platforms": {
+        "darwin-arm64": {
+          "url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz",
+          "sha256": "aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e6953f",
+          "member": "actionlint",
+          "license_member": "LICENSE.txt"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz",
+          "sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8",
+          "member": "actionlint",
+          "license_member": "LICENSE.txt"
+        },
+        "linux-arm64": {
+          "url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_arm64.tar.gz",
+          "sha256": "325e971b6ba9bfa504672e29be93c24981eeb1c07576d730e9f7c8805afff0c6",
+          "member": "actionlint",
+          "license_member": "LICENSE.txt"
+        }
+      }
+    },
+    "gitleaks": {
+      "version": "8.30.1",
+      "release_url": "https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1",
+      "platforms": {
+        "darwin-arm64": {
+          "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_darwin_arm64.tar.gz",
+          "sha256": "b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5",
+          "member": "gitleaks",
+          "license_member": "LICENSE"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz",
+          "sha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb",
+          "member": "gitleaks",
+          "license_member": "LICENSE"
+        },
+        "linux-arm64": {
+          "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_arm64.tar.gz",
+          "sha256": "e4a487ee7ccd7d3a7f7ec08657610aa3606637dab924210b3aee62570fb4b080",
+          "member": "gitleaks",
+          "license_member": "LICENSE"
+        }
+      }
+    }
+  }
+}

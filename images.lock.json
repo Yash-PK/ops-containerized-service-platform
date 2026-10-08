@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "images": {
+    "python": {
+      "repository": "library/python",
+      "tag": "3.14.7-slim-trixie",
+      "digest": "sha256:51dafde81dbdb6ebde285137a295cf18a47ca95234fe388a343719cb97305b3d",
+      "image": "library/python:3.14.7-slim-trixie@sha256:51dafde81dbdb6ebde285137a295cf18a47ca95234fe388a343719cb97305b3d",
+      "linux_manifests": {
+        "amd64": "sha256:7bf6c3111fe094f8ee1a1cbcdc63c4cfb345b0e3df42d5aa9a90b3b4b022ab6d",
+        "arm64": "sha256:67994a05c712036dbfc4385b4bceafc0ce20df950f54b9ea355582c153bf6157"
+      },
+      "registry_url": "https://registry-1.docker.io/v2/library/python/manifests/3.14.7-slim-trixie",
+      "verified_at": "2026-10-08",
+      "verification": "Manifest bytes SHA256 matched registry Docker-Content-Digest over TLS; platform descriptors include amd64 and arm64."
+    },
+    "postgres": {
+      "repository": "library/postgres",
+      "tag": "18.6-trixie",
+      "digest": "sha256:74935e72241653ca55e0414067e6d8763aceb8a810eb51b452253ec3dcfc4336",
+      "image": "library/postgres:18.6-trixie@sha256:74935e72241653ca55e0414067e6d8763aceb8a810eb51b452253ec3dcfc4336",
+      "linux_manifests": {
+        "amd64": "sha256:885953109528ad3dfc90362b1a6f50a78620b5315be19f187753d267e484dc5b",
+        "arm64": "sha256:a63b24165ea0eacced7585766d790ac08bbaefe10a1841f87783a4505d29a69c"
+      },
+      "registry_url": "https://registry-1.docker.io/v2/library/postgres/manifests/18.6-trixie",
+      "verified_at": "2026-10-08",
+      "verification": "Manifest bytes SHA256 matched registry Docker-Content-Digest over TLS; platform descriptors include amd64 and arm64."
+    },
+    "valkey": {
+      "repository": "valkey/valkey",
+      "tag": "9.1.2-trixie",
+      "digest": "sha256:418652cfb58ef879d4978c33553735d7147016032d5aefaa14c828e611eb9dfd",
+      "image": "valkey/valkey:9.1.2-trixie@sha256:418652cfb58ef879d4978c33553735d7147016032d5aefaa14c828e611eb9dfd",
+      "linux_manifests": {
+        "amd64": "sha256:ac9c858b86dc81f3482d53a9d854547379a5f41e012500f839ab257c399063e0",
+        "arm64": "sha256:5a6ac3cceea0d4cebe48911dfa5f393f49feea86a2c55c5ac6b0ba733a1713b6"
+      },
+      "registry_url": "https://registry-1.docker.io/v2/valkey/valkey/manifests/9.1.2-trixie",
+      "verified_at": "2026-10-08",
+      "verification": "Manifest bytes SHA256 matched registry Docker-Content-Digest over TLS; platform descriptors include amd64 and arm64."
+    },
+    "nginx": {
+      "repository": "library/nginx",
+      "tag": "1.30.5-trixie",
+      "digest": "sha256:9bf97bd7714f5e24c1ccd545ecb9eb5435cb6d109c97cebb15e7e455e0239edb",
+      "image": "library/nginx:1.30.5-trixie@sha256:9bf97bd7714f5e24c1ccd545ecb9eb5435cb6d109c97cebb15e7e455e0239edb",
+      "linux_manifests": {
+        "amd64": "sha256:6e2a172ae5503c0df64cd3294b57c86394ced402016a8cc45436086fa51f5d02",
+        "arm64": "sha256:f5ae789ee55efbb34a3e904da4a55e5747a482551ffbfd90adf020bed60a3a0c"
+      },
+      "registry_url": "https://registry-1.docker.io/v2/library/nginx/manifests/1.30.5-trixie",
+      "verified_at": "2026-10-08",
+      "verification": "Manifest bytes SHA256 matched registry Docker-Content-Digest over TLS; platform descriptors include amd64 and arm64."
+    }
+  }
+}
