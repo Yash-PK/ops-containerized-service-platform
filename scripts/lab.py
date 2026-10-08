@@ -9,6 +9,7 @@ import json
 import os
 import platform
 import re
+import shlex
 import subprocess
 import zlib
 from pathlib import Path
@@ -41,45 +42,140 @@ CODE_PATHS = (
     "images.lock.json",
     ".python-version",
 )
-INSTALLER = """import base64,json,os,pathlib,re,stat,sys,zlib
+CHUNK_BYTES = 8000
+MAX_ENCODED_BYTES = 64000
+MAX_COMMAND_BYTES = 16000
+
+# These guest programs run only through authenticated SSH in the owned VM.
+# Keep each complete shell-quoted command below the conservative mux limit.
+GUEST_BOUNDARY = """import base64,hashlib,json,os,pathlib,re,stat,sys,zlib
+EXPECTED_UID=0
 marker=pathlib.Path('/etc/ops-fleet-lab.json')
-info=marker.lstat()
-assert os.geteuid()==0 and stat.S_ISREG(info.st_mode) and info.st_uid==0
-assert not info.st_mode & 0o022
-expected={'lab_id':'ops-fleet-reference','managed_by':'ops-linux-fleet-automation'}
-assert json.loads(marker.read_text())==expected
+staging=pathlib.Path('/var/lib/ops-container-platform-upload')
 root=pathlib.Path('/var/lib/ops-container-platform')
-assert root.resolve()==root and not root.exists()
-compressed=base64.b64decode(sys.argv[1],validate=True)
-assert len(compressed)<=48000
+def require(condition,message):
+    if not condition: raise ValueError(message)
+def regular(path,mode=None,maximum=64000):
+    info=path.lstat()
+    require(stat.S_ISREG(info.st_mode) and info.st_uid==EXPECTED_UID
+            and info.st_nlink==1 and info.st_size<=maximum,'unsafe upload file')
+    require(not info.st_mode & 0o022,'writable upload file')
+    if mode is not None: require(stat.S_IMODE(info.st_mode)==mode,'upload file mode')
+    return path
+require(os.geteuid()==EXPECTED_UID,'guest root required')
+expected={'lab_id':'ops-fleet-reference','managed_by':'ops-linux-fleet-automation'}
+require(json.loads(regular(marker,maximum=4096).read_text())==expected,'provider identity')
+require(root.resolve()==root and not root.exists() and not root.is_symlink(),'existing project')
+require(staging.resolve()==staging and not staging.is_symlink(),'staging path')
+require(len(sys.argv)>=4,'upload identity arguments')
+digest,count_text,size_text=sys.argv[1:4]
+require(re.fullmatch('[0-9a-f]{64}',digest) is not None,'upload digest')
+require(re.fullmatch('[1-8]',count_text) is not None,'upload part count')
+require(re.fullmatch('[1-9][0-9]{0,4}',size_text) is not None,'upload size')
+count,size=int(count_text),int(size_text)
+require(size<=64000 and count==(size+7999)//8000,'upload count/size mismatch')
+identity={'lab_id':'ops-container-platform-reference','sha256':digest,
+          'parts':count,'bytes':size,'chunk_bytes':8000}
+def part_name(index): return 'part-%04d.b64'%index
+def stage(expected_parts):
+    info=staging.lstat()
+    require(stat.S_ISDIR(info.st_mode) and info.st_uid==EXPECTED_UID
+            and stat.S_IMODE(info.st_mode)==0o700,'staging ownership/mode')
+    require(json.loads(regular(staging/'owner.json',0o600,4096).read_text())==identity,
+            'staging identity mismatch')
+    expected_names={'owner.json'}|{part_name(i) for i in range(expected_parts)}
+    require({p.name for p in staging.iterdir()}==expected_names,'staging sequence/content')
+    for i in range(expected_parts): regular(staging/part_name(i),0o600,8000)
+def exclusive(path,data):
+    descriptor=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+    with os.fdopen(descriptor,'wb') as output:
+        os.fchmod(output.fileno(),0o600)
+        output.write(data)
+"""
+UPLOAD_START = (
+    GUEST_BOUNDARY
+    + """
+require(len(sys.argv)==4,'upload start arguments')
+require(not staging.exists(),'existing upload staging')
+staging.mkdir(mode=0o700)
+staging.chmod(0o700)
+exclusive(staging/'owner.json',json.dumps(identity,sort_keys=True).encode())
+stage(0)
+print('upload-ready')
+"""
+)
+UPLOAD_PART = (
+    GUEST_BOUNDARY
+    + """
+require(len(sys.argv)==7,'upload part arguments')
+index_text,part_digest,data=sys.argv[4:7]
+require(re.fullmatch('[0-7]',index_text) is not None,'upload part index')
+index=int(index_text)
+require(index<count,'upload part range')
+require(re.fullmatch('[0-9a-f]{64}',part_digest) is not None,'part digest format')
+require(re.fullmatch('[A-Za-z0-9+/=]+',data) is not None,'part encoding')
+expected_size=8000 if index<count-1 else size-8000*index
+require(len(data)==expected_size,'part size')
+require(hashlib.sha256(data.encode('ascii')).hexdigest()==part_digest,'part digest mismatch')
+stage(index)
+exclusive(staging/part_name(index),data.encode('ascii'))
+stage(index+1)
+print('upload-part-stored')
+"""
+)
+INSTALLER = (
+    GUEST_BOUNDARY
+    + """
+require(len(sys.argv)==4,'installer arguments')
+stage(count)
+parts=[]
+for i in range(count):
+    data=regular(staging/part_name(i),0o600,8000).read_bytes()
+    require(len(data)==(8000 if i<count-1 else size-8000*i),'stored part size')
+    parts.append(data)
+encoded=b''.join(parts)
+require(len(encoded)==size and len(encoded)<=64000,'joined upload size')
+require(hashlib.sha256(encoded).hexdigest()==digest,'joined upload digest mismatch')
+compressed=base64.b64decode(encoded,validate=True)
+require(len(compressed)<=48000,'compressed payload size')
 decoder=zlib.decompressobj()
 decoded=decoder.decompress(compressed,1000001)
-assert len(decoded)<=1000000 and decoder.eof
-assert not decoder.unused_data and not decoder.unconsumed_tail
-payload=json.loads(decoded)
-assert isinstance(payload,dict) and 1<=len(payload)<=80
+require(len(decoded)<=1000000 and decoder.eof,'decoded payload size/completeness')
+require(not decoder.unused_data and not decoder.unconsumed_tail,'trailing compressed content')
+def unique_object(pairs):
+    value={}
+    for name,item in pairs:
+        require(name not in value,'duplicate payload path')
+        value[name]=item
+    return value
+payload=json.loads(decoded,object_pairs_hook=unique_object)
+require(isinstance(payload,dict) and 1<=len(payload)<=80,'payload inventory')
 validated={}
 for name,content in payload.items():
-    assert isinstance(name,str) and isinstance(content,str)
+    require(isinstance(name,str) and isinstance(content,str),'payload entry type')
     relative=pathlib.PurePosixPath(name)
-    assert not relative.is_absolute() and '..' not in relative.parts
+    require(not relative.is_absolute() and '..' not in relative.parts,'payload path')
     fixed={'Dockerfile','.dockerignore','compose.json','requirements.lock','images.lock.json',
            'engine.lock.json','packages.lock.json','scripts/credentials.py'}
     pattern=r'(opsjobs|guest)/[a-z_]+\\.py|migrations/[0-9]{3}_[a-z_]+\\.sql'
     pattern+=r'|containers/[a-z-]+\\.(sh|conf)'
-    assert name in fixed or re.fullmatch(pattern,name)
+    require(name in fixed or re.fullmatch(pattern,name) is not None,'payload path allowlist')
     validated[name]=base64.b64decode(content,validate=True)
 root.mkdir(mode=0o700)
-(root/'owner.json').write_text(json.dumps({'lab_id':'ops-container-platform-reference'}))
-(root/'owner.json').chmod(0o600)
+exclusive(root/'owner.json',json.dumps({'lab_id':'ops-container-platform-reference'}).encode())
 for name,content in validated.items():
     target=root/pathlib.PurePosixPath(name)
     target.parent.mkdir(mode=0o755,parents=True,exist_ok=True)
-    assert target.resolve()==target and not target.exists()
-    with target.open('xb') as output: output.write(content)
+    require(target.resolve()==target and not target.exists(),'payload destination')
+    exclusive(target,content)
     target.chmod(0o644)
+stage(count)
+for i in range(count): (staging/part_name(i)).unlink()
+(staging/'owner.json').unlink()
+staging.rmdir()
 print('guest-payload-installed')
 """
+)
 
 
 class LabError(RuntimeError):
@@ -147,6 +243,94 @@ def payload(root=ROOT):
     if len(serialized) > 1000000 or len(encoded) > 64000:
         raise LabError("Guest payload exceeds bounded transport size")
     return encoded
+
+
+def validate_payload(encoded):
+    """Reject malformed transfer contents before provider loading or VM allocation."""
+    if not isinstance(encoded, str) or not 1 <= len(encoded) <= MAX_ENCODED_BYTES:
+        raise LabError("Guest payload exceeds bounded transport size")
+    try:
+        compressed = base64.b64decode(encoded, validate=True)
+        if len(compressed) > 48000:
+            raise ValueError("Compressed payload too large")
+        decoder = zlib.decompressobj()
+        decoded = decoder.decompress(compressed, 1000001)
+        if (
+            len(decoded) > 1000000
+            or not decoder.eof
+            or decoder.unused_data
+            or decoder.unconsumed_tail
+        ):
+            raise ValueError("Payload compression boundary")
+
+        def unique_object(pairs):
+            result = {}
+            for name, item in pairs:
+                if name in result:
+                    raise ValueError("Duplicate payload path")
+                result[name] = item
+            return result
+
+        value = json.loads(decoded, object_pairs_hook=unique_object)
+        if not isinstance(value, dict) or not 1 <= len(value) <= 80:
+            raise ValueError("Payload inventory")
+        fixed = {
+            "Dockerfile",
+            ".dockerignore",
+            "compose.json",
+            "requirements.lock",
+            "images.lock.json",
+            "engine.lock.json",
+            "packages.lock.json",
+            "scripts/credentials.py",
+        }
+        pattern = r"(opsjobs|guest)/[a-z_]+\.py|migrations/[0-9]{3}_[a-z_]+\.sql"
+        pattern += r"|containers/[a-z-]+\.(sh|conf)"
+        for name, content in value.items():
+            if not isinstance(content, str) or not (name in fixed or re.fullmatch(pattern, name)):
+                raise ValueError("Payload path/content allowlist")
+            base64.b64decode(content, validate=True)
+    except (ValueError, TypeError, RecursionError, zlib.error) as error:
+        raise LabError("Invalid bounded guest payload") from error
+
+
+def transfer_plan(encoded):
+    """Build and validate every bounded SSH command before creating a VM."""
+    validate_payload(encoded)
+    chunks = [encoded[i : i + CHUNK_BYTES] for i in range(0, len(encoded), CHUNK_BYTES)]
+    digest = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+    identity = [digest, str(len(chunks)), str(len(encoded))]
+    plan = []
+
+    def add(code, args, label, response):
+        argv = ["sudo", "/usr/bin/python3", "-c", code, *args]
+        command_bytes = len(shlex.join(argv).encode("utf-8"))
+        if command_bytes > MAX_COMMAND_BYTES:
+            raise LabError("Upload command exceeds conservative SSH multiplexing limit")
+        plan.append({"argv": argv, "label": label, "response": response, "bytes": command_bytes})
+
+    add(UPLOAD_START, identity, "upload-start", "upload-ready")
+    for index, chunk in enumerate(chunks):
+        part_digest = hashlib.sha256(chunk.encode("ascii")).hexdigest()
+        add(
+            UPLOAD_PART,
+            [*identity, str(index), part_digest, chunk],
+            f"upload-part-{index:04d}",
+            "upload-part-stored",
+        )
+    add(INSTALLER, identity, "install-payload", "guest-payload-installed")
+    return plan
+
+
+def install_payload(provider, plan, report):
+    for item in plan:
+        output = provider.run(
+            transport(provider, item["argv"]), distro="ubuntu", timeout=30, log=item["label"]
+        )
+        if output.strip() != item["response"]:
+            raise LabError("Guest upload acknowledgement mismatch: " + item["label"])
+        report["completed_commands"].append(item["label"])
+    report["passed"] = True
 
 
 def target(lab_id, confirm, execute):
@@ -236,6 +420,7 @@ def execute(root=ROOT, development=False):
         revision = "uncommitted"
     output = report_path(root, development, revision)
     encoded = payload(root)
+    upload = transfer_plan(encoded)
     fingerprint = code_digest(root)
     module = load_provider(root, require_binary=True)
     provider = module.Lab(root)
@@ -255,6 +440,14 @@ def execute(root=ROOT, development=False):
             "vm_disk_gib_sparse": 24,
         },
         "phases": {},
+        "transfer": {
+            "sha256": hashlib.sha256(encoded.encode("ascii")).hexdigest(),
+            "encoded_bytes": len(encoded),
+            "parts": len(upload) - 2,
+            "max_command_bytes": max(item["bytes"] for item in upload),
+            "completed_commands": [],
+            "passed": False,
+        },
         "passed": False,
     }
     with provider.exclusive():
@@ -262,12 +455,7 @@ def execute(root=ROOT, development=False):
             raise LabError("Owned VM inventory not empty; use explicit teardown before rerunning")
         try:
             provider.start("ubuntu")
-            provider.run(
-                transport(provider, ["sudo", "/usr/bin/python3", "-c", INSTALLER, encoded]),
-                distro="ubuntu",
-                timeout=30,
-                log="install-payload",
-            )
+            install_payload(provider, upload, report["transfer"])
             prepared = phase(provider, module, "prepare")
             report["phases"]["prepare"] = prepared
             if prepared.get("passed") is not True:

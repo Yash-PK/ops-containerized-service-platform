@@ -48,6 +48,14 @@ def fixtures():
         "development": False,
         "passed": True,
         "vm_cleanup": "passed",
+        "transfer": {
+            "passed": True,
+            "sha256": "c" * 64,
+            "parts": 1,
+            "encoded_bytes": 100,
+            "max_command_bytes": 6000,
+            "completed_commands": ["upload-start", "upload-part-0000", "install-payload"],
+        },
         "phases": {
             "prepare": prepare,
             "compose": {
@@ -154,6 +162,30 @@ class EvidenceContractTests(unittest.TestCase):
             "database_runtime_nonroot",
         ):
             self.assertIn(name, evidence.COMPOSE_CHECKS)
+
+    def test_incomplete_oversized_or_malformed_transfer_is_not_release_proof(self):
+        for field, value in (
+            ("passed", 1),
+            ("passed", False),
+            ("sha256", "unknown"),
+            ("parts", 2),
+            ("parts", True),
+            ("encoded_bytes", 64001),
+            ("encoded_bytes", 0),
+            ("max_command_bytes", 16001),
+            ("max_command_bytes", "6000"),
+            ("completed_commands", ["upload-start", "install-payload"]),
+            ("completed_commands", ["upload-start", "upload-part-0000"]),
+            ("skipped", True),
+        ):
+            with self.subTest(field=field, value=value):
+                report = copy.deepcopy(self.reports["compose"])
+                report["transfer"][field] = value
+                self.assertFalse(evidence.passed(report, "compose", FINGERPRINT))
+        for transfer in (None, {}, [], "passed"):
+            report = copy.deepcopy(self.reports["compose"])
+            report["transfer"] = transfer
+            self.assertFalse(evidence.passed(report, "compose", FINGERPRINT))
 
     def test_failed_skipped_duplicate_or_empty_assertions_cannot_hide_behind_summary(self):
         for mutation in ("failed", "truthy", "skipped", "duplicate", "empty"):

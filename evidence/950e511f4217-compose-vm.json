@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "lab_id": "ops-container-platform-reference",
+  "revision": "950e511f42173c00994496265bb48104623e1bea",
+  "code_fingerprint": "1058c9278fe1942b5becedbde4a5ffd312a846f18959af587ebe2e3615f3ad22",
+  "development": false,
+  "started_at": "2026-10-08T07:04:57.958232+00:00",
+  "environment": {
+    "os": "Darwin",
+    "arch": "arm64",
+    "python": "3.14.7",
+    "vm_cpu": 2,
+    "vm_memory_gib": 2,
+    "vm_disk_gib_sparse": 24
+  },
+  "phases": {},
+  "passed": false,
+  "error": "install-payload failed with exit 255; inspect ignored runtime log",
+  "error_type": "LabError",
+  "vm_cleanup": "passed",
+  "finished_at": "2026-10-08T07:05:13.868632+00:00"
+}

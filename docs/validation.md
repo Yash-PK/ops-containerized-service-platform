@@ -58,3 +58,21 @@ and the harness requested only UID/arguments. The fix requests UID/PID/arguments
 validates numeric identities and tests malformed/empty output. Requested port
 bindings are now also compared with realized engine mappings. This run remains
 failed overall; Compose resources and the owned VM were removed successfully.
+
+## First formal attempt
+
+Source `950e511f42173c00994496265bb48104623e1bea` passed the 57-test controller
+report and clean-clone quickstart. Its formal VM report is a **failure**:
+`evidence/950e511f4217-compose-vm.json` records SSH upload exit 255 before any guest
+phase ran. The private transport log reports `mm_send_fd: sendmsg(2): Message too
+long` and `mux_client_request_session: send fds failed`. The encoded source was
+54,532 bytes plus the installer, within the old application limit but too large
+for this macOS multiplexed transport request. The VM was removed successfully.
+A bounded chunked transfer now validates the complete payload before allocating
+a VM, sends at most 8,000 encoded bytes per part, and caps each shell-quoted SSH
+command at 16,000 bytes. The guest verifies staging ownership, sequence, part and
+whole-payload checksums before installation. Fixture tests exercise corruption,
+foreign files, symlinks, unsafe modes and interrupted transfer cleanup. This fix
+still needs a fresh formal VM run. Neither passing controller checks nor the
+previous partial workflow turns the failed report into release proof. Its tested
+revision and failure remain preserved.

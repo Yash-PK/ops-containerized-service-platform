@@ -4,7 +4,16 @@ import hashlib
 import json
 import re
 
-from lab import CODE_PATHS, LAB_ID, ROOT, code_digest, git
+from lab import (
+    CHUNK_BYTES,
+    CODE_PATHS,
+    LAB_ID,
+    MAX_COMMAND_BYTES,
+    MAX_ENCODED_BYTES,
+    ROOT,
+    code_digest,
+    git,
+)
 
 CONTROLLER_TARGETS = ("doctor", "validate", "demo", "security")
 CONTROLLER_NOT_RUN = ["real VM profiles; see separately recorded integration report"]
@@ -129,6 +138,30 @@ def commands_passed(values):
     )
 
 
+def transfer_passed(value):
+    if not unskipped(value) or value.get("passed") is not True:
+        return False
+    parts, size, maximum = (
+        value.get("parts"),
+        value.get("encoded_bytes"),
+        value.get("max_command_bytes"),
+    )
+    return (
+        all(type(item) is int for item in (parts, size, maximum))
+        and 1 <= size <= MAX_ENCODED_BYTES
+        and parts == (size + CHUNK_BYTES - 1) // CHUNK_BYTES
+        and 0 < maximum <= MAX_COMMAND_BYTES
+        and isinstance(value.get("sha256"), str)
+        and re.fullmatch("[0-9a-f]{64}", value["sha256"]) is not None
+        and value.get("completed_commands")
+        == [
+            "upload-start",
+            *[f"upload-part-{index:04d}" for index in range(parts)],
+            "install-payload",
+        ]
+    )
+
+
 def passed(report, kind, fingerprint):
     if (
         kind not in {"compose", "controller", "clone"}
@@ -162,6 +195,7 @@ def passed(report, kind, fingerprint):
         sql = phase.get("sql_integration")
         return (
             report.get("lab_id") == LAB_ID
+            and transfer_passed(report.get("transfer"))
             and report.get("code_fingerprint") == fingerprint
             and report.get("development") is False
             and report.get("vm_cleanup") == "passed"

@@ -1,5 +1,6 @@
 """Failure-path ownership tests with no VM, engine or host mutation."""
 
+import base64
 import contextlib
 import io
 import json
@@ -7,6 +8,7 @@ import stat
 import sys
 import tempfile
 import unittest
+import zlib
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
@@ -32,6 +34,7 @@ class FakeProvider:
         self.events = []
         self.fail_start = False
         self.fail_destroy = False
+        self.fail_upload = None
 
     def exclusive(self):
         return contextlib.nullcontext()
@@ -54,9 +57,18 @@ class FakeProvider:
             raise ProviderError("synthetic cleanup failure")
         del self.instances[distro]
 
-    def run(self, _args, **_kwargs):
-        self.events.append("install")
-        return "guest-payload-installed"
+    def run(self, _args, **kwargs):
+        label = kwargs["log"]
+        self.events.append(label)
+        if label == self.fail_upload:
+            raise ProviderError("synthetic partial transfer failure")
+        return (
+            "upload-ready"
+            if label == "upload-start"
+            else "upload-part-stored"
+            if label.startswith("upload-part-")
+            else "guest-payload-installed"
+        )
 
     def child(self, name):
         return self.root / name
@@ -74,7 +86,13 @@ class ControllerLifecycleTests(unittest.TestCase):
             patch.object(lab.platform, "system", return_value="Darwin"),
             patch.object(lab.platform, "machine", return_value="arm64"),
             patch.object(lab, "git", side_effect=["", "a" * 40]),
-            patch.object(lab, "payload", return_value="synthetic-transport"),
+            patch.object(
+                lab,
+                "payload",
+                return_value=base64.b64encode(
+                    zlib.compress(b'{"opsjobs/api.py":"c3ludGhldGlj"}')
+                ).decode(),
+            ),
             patch.object(lab, "code_digest", side_effect=fingerprints or ["same", "same"]),
             patch.object(lab, "load_provider", return_value=module),
             patch.object(lab, "phase", side_effect=phases or [{"passed": True}] * 2),
@@ -91,7 +109,19 @@ class ControllerLifecycleTests(unittest.TestCase):
             code, report = self.simulate(root, provider)
         self.assertEqual(code, 0)
         self.assertTrue(report["passed"])
-        self.assertEqual(provider.events, ["start", "install", "stop", "start", "destroy"])
+        self.assertEqual(
+            provider.events,
+            [
+                "start",
+                "upload-start",
+                "upload-part-0000",
+                "install-payload",
+                "stop",
+                "start",
+                "destroy",
+            ],
+        )
+        self.assertTrue(report["transfer"]["passed"])
         self.assertFalse(provider.instances)
 
     def test_start_prepare_and_compose_failures_preserve_report_and_cleanup(self):
@@ -131,6 +161,23 @@ class ControllerLifecycleTests(unittest.TestCase):
         self.assertFalse(report["passed"])
         self.assertEqual(report["vm_cleanup"], "failed")
         self.assertIn("ubuntu", provider.instances)
+
+    def test_partial_transfer_failure_stops_preparation_and_destroys_owned_vm(self):
+        for label in ("upload-start", "upload-part-0000", "install-payload"):
+            with self.subTest(label=label), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary).resolve()
+                provider = FakeProvider(root)
+                provider.fail_upload = label
+                code, report = self.simulate(root, provider)
+                self.assertEqual(code, 1)
+                self.assertFalse(report["passed"])
+                self.assertFalse(report["transfer"]["passed"])
+                self.assertNotIn(label, report["transfer"]["completed_commands"])
+                self.assertEqual(report["vm_cleanup"], "passed")
+                self.assertEqual(provider.events[-1], "destroy")
+                self.assertNotIn("stop", provider.events)
+                self.assertFalse(report["phases"])
+                self.assertFalse(provider.instances)
 
     def test_existing_inventory_is_never_adopted_or_destroyed(self):
         with tempfile.TemporaryDirectory() as temporary:
