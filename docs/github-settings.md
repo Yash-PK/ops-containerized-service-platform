@@ -21,6 +21,11 @@ the application's local integration or release proof.
 
 After publication, record the actual availability and enabled/disabled state of
 repository secret scanning, push protection, private vulnerability reporting and
-dependency vulnerability alerts. Their status is **pending verification** here.
+dependency vulnerability alerts. On 2026-10-08 all four were **verified enabled**
+for this public repository: repository metadata returned secret-scanning and
+push-protection `enabled`, reporting returned `enabled: true`, and the alert
+endpoint returned HTTP 204. Only repository-scoped reporting/alert settings and
+topics were changed; no ruleset or account setting was applied.
+[GitHub documents free public-repository secret scanning](https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning).
 Use only features available without adding a paid service, and make no
 account-wide changes. Do not describe a proposed setting as an enforced control.

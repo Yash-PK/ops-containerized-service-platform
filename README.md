@@ -8,8 +8,8 @@ dependencies and checks what the API can still promise.
 The bounded local core passed formal controller, clean-clone and real Docker
 Compose validation at source `3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`.
 The VM run passed 139 commands, 94 preparation/lifecycle assertions and 21 nested
-SQL assertions, including scoped cleanup. Publication, hosted CI and a versioned
-release remain pending. See the [validation record](docs/validation.md) and
+SQL assertions, including scoped cleanup. Public repository metadata and Linux
+controller CI were verified at `19ec88d5d4a6aa7541e7722b994618c3a6929cc5`. See the [validation record](docs/validation.md) and
 [acceptance checklist](docs/acceptance.md). This is lab engineering work; no
 production availability, cloud deployment or employment-experience claim is made.
 
@@ -132,13 +132,12 @@ controller validation and VM integration have independent states.
 ## Security and operational boundaries
 
 Application processes are configured as UID 10001, Valkey as 999, and nginx as
-101. The PostgreSQL image initializes its data directory before running the database as
-its unprivileged account. The runtime assertion checks that live service processes
+101. The PostgreSQL image initializes its data directory before running the
+database as its unprivileged account. The runtime assertion checks that live service processes
 are non-root; it does not compare every process with those exact configured UIDs
 or inspect the exited migration's process identity. The migration receives owner
 credentials; the running API and worker receive only the application database
-credential. No database or
-cache ports are published. Two internal Compose networks separate proxy-to-API
+credential. No database or cache ports are published. Two internal Compose networks separate proxy-to-API
 traffic (`frontend`) from data services (`backend`). Only nginx additionally joins
 `edge`, a normal bridge used for guest-loopback publishing. That bridge permits
 proxy egress; it does not expose a service on all guest interfaces. The explicit

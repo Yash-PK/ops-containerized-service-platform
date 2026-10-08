@@ -3,8 +3,15 @@
 The bounded local core passed at source
 `3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`, implementation fingerprint
 `2d02d563e250b498d07b3695894a21d825bc7310c6ed47bd2afc3ee55b1a2f2b`.
-Publication, hosted CI and release remain pending. Evidence/documentation commits
-after this source do not become the original tested revision.
+The public `Yash-PK/ops-containerized-service-platform` repository was verified
+with `main` at `19ec88d5d4a6aa7541e7722b994618c3a6929cc5`. Exact-revision
+[GitHub CI](https://github.com/Yash-PK/ops-containerized-service-platform/actions/runs/37743386301)
+passed all controller gates and 71 tests on Linux x86_64 / Python 3.14.7. Its
+[downloaded CI report](../evidence/19ec88d5d4a6-ci-linux.json) preserves that identity;
+it does not claim Linux-host VM or x86 container integration. Release creation
+requires a separate successful CI check on the final tag target.
+Evidence/documentation commits after the VM source do not become the original
+VM-tested revision.
 
 | Profile | Actual result | Report |
 | --- | --- | --- |

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0 — 2026-10-08
 
 - Implement a bounded HTTP API and separate text-analysis worker with durable
   PostgreSQL acceptance, idempotent submission, lease fencing and bounded retries.
@@ -12,9 +12,11 @@
   service failure, persistence, recovery and ownership-scoped cleanup.
 - Document architecture, dependency selection, operational boundaries and
   validation requirements. Integration and publication status follow actual
-  evidence; this entry does not declare a released version.
+  evidence; release creation requires exact-target CI.
 - Pass formal controller (71 tests), standalone clean-clone and real ARM64
   Compose lifecycle gates at `3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`, including
   139 commands, 94 preparation/lifecycle assertions, 21 nested SQL assertions and
   owned cleanup. Preserve four development failures and the earlier formal SSH
-  transfer failure. Hosted CI and a versioned release remain pending.
+  transfer failure. Linux controller CI passed at the first public revision
+  `19ec88d5d4a6aa7541e7722b994618c3a6929cc5`; final release-target CI is checked
+  separately before creating the tag.

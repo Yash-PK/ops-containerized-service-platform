@@ -2,7 +2,8 @@
 
 Status: bounded local core passed formal controller, standalone clean-clone and
 real Compose acceptance at `3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`.
-Publication, exact-head hosted CI and release remain pending. This checklist was
+Publication and exact-head hosted CI passed at `19ec88d5d4a6aa7541e7722b994618c3a6929cc5`.
+A release additionally requires CI on its final tag target. This checklist was
 defined before implementation; [validation](validation.md) records the observed
 scope, failed attempts and remaining limitations.
 
