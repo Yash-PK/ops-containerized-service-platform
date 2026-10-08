@@ -13,13 +13,13 @@ deployment, or employment-experience claim is made.
 
 ```mermaid
 flowchart LR
-    client[Guest-local test client] -->|127.0.0.1:8080| proxy[nginx]
-    proxy -->|frontend network| api[Python API]
-    api -->|durable acceptance and reads| db[(PostgreSQL)]
-    worker[Python worker] -->|claim and fenced completion| db
-    api -->|optional completed-result cache| cache[(Valkey)]
-    migrate[One-shot migration] --> db
-    seed[Explicit synthetic seed] --> db
+    client[Guest-local test client] -->|127.0.0.1:8080| proxy[nginx on edge bridge]
+    proxy -->|internal frontend| api[Python API]
+    api -->|internal backend: durable state| db[(PostgreSQL)]
+    worker[Python worker] -->|internal backend: leased jobs| db
+    api -->|internal backend: optional cache| cache[(Valkey)]
+    migrate[One-shot migration] -->|internal backend| db
+    seed[Explicit synthetic seed] -->|internal backend| db
 ```
 
 The containers run inside a disposable Ubuntu VM. The VM uses Apple's VZ
@@ -133,8 +133,16 @@ Application processes run as UID 10001, Valkey as 999, and nginx as 101. The
 PostgreSQL image initializes its data directory before running the database as
 its unprivileged account. The migration receives owner credentials; the running
 API and worker receive only the application database credential. No database or
-cache ports are published. Two internal Compose networks separate the proxy
-from the backend services.
+cache ports are published. Two internal Compose networks separate proxy-to-API
+traffic (`frontend`) from data services (`backend`). Only nginx additionally joins
+`edge`, a normal bridge used for guest-loopback publishing. That bridge permits
+proxy egress; it does not expose a service on all guest interfaces. The explicit
+mapping remains `127.0.0.1:8080:8080`, with no application forwarding to macOS.
+See [Docker's port publishing behavior](https://docs.docker.com/engine/network/port-publishing/).
+
+The proxy health check requests `/health/ready` through nginx to the API. The
+integration client separately verifies the guest-loopback published path; a
+successful container-internal probe cannot establish that port mapping.
 
 Runtime credentials are generated for the disposable run and stored in ignored
 private paths. Secrets, guest logs, VM disks, build caches and generated state do
@@ -180,11 +188,3 @@ Design details: [architecture](docs/architecture.md),
 [isolated runtime decision](docs/decisions/0002-owned-vm-runtime.md).
 Original code is [MIT licensed](LICENSE); [NOTICE.md](NOTICE.md) records reuse and
 third-party boundaries.
-
-The proxy also joins a dedicated `edge` bridge, needed for guest-loopback port
-publishing. Only the proxy joins that network; the API, database, worker and cache
-remain on internal application networks. The edge permits proxy egress but binds
-the single published port to 127.0.0.1, with no forwarding from the VM to macOS.
-The proxy health probe performs HTTP through nginx to application readiness. See
-[Docker port publishing](https://docs.docker.com/engine/network/port-publishing/)
-for the distinction between a bridge and an explicitly loopback-bound port.

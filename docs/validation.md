@@ -48,3 +48,13 @@ Its process-only proxy health check had not proved the client path. The proxy no
 has an HTTP readiness probe and a dedicated normal bridge for loopback publishing;
 API/database/cache remain on the two internal networks. Both Compose teardown and
 VM deletion passed on the failed run. Real acceptance remains pending.
+
+The fourth run (`20261008T065059048620-development.json`) passed real asynchronous
+completion, replay/conflict checks, cache hits and outage fallback/recovery,
+persistence after restart, bounded database failure and recovery, API SIGTERM,
+migration/seed idempotency and all 21 real PostgreSQL assertions. It then failed
+process inspection: Docker requires a PID column to filter `docker top` results,
+and the harness requested only UID/arguments. The fix requests UID/PID/arguments,
+validates numeric identities and tests malformed/empty output. Requested port
+bindings are now also compared with realized engine mappings. This run remains
+failed overall; Compose resources and the owned VM were removed successfully.

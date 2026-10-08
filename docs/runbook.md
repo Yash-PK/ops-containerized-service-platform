@@ -26,7 +26,8 @@ it. Retain the exact source revision and locks when comparing failures.
 | Job remains `running` after a crash | Lease recovery | Allow its 30-second lease to expire. Verify a new claim token; do not manually force success. Three failed attempts end as `failed`. |
 | Cache is stopped but GET still works | Expected SQL fallback | Check SQL-backed response equality, restart only the cache, and verify health. This is not proof that writes survive database failure. |
 | POST returns `503`; live `200`, ready `503` | Database unavailable | Restore the owned database; readiness and queued-job completion must recover. A cached result can still return `200`. |
-| Proxy process healthy but requests fail | API/DNS/upstream | Inspect API readiness and proxy error log. A PID check alone does not establish end-to-end health. |
+| Proxy healthy but guest-loopback requests fail | Published path or engine network | The proxy probe checks HTTP from inside its container. Inspect exact loopback mapping and `edge` membership; preserve internal frontend/backend networks. Verify the guest client path separately. |
+| Proxy HTTP readiness fails | API/DNS/database | Inspect API readiness and reviewed proxy errors. A database outage intentionally fails readiness while `/health/live` can remain available. |
 | Container killed or exit `137` | Memory/PID/resource pressure | Record limits, exit state and actual pressure. Adjust a reviewed bounded profile; do not remove all limits. |
 | Cleanup reports an unexpected object | Ownership conflict | Keep the inventory and stop. Inspect the exact object/engine labels before an explicitly scoped cleanup. |
 

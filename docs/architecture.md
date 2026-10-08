@@ -48,9 +48,12 @@ There is no lease renewal because the maximum input is 4096 bytes. External
 side effects or long jobs would need a different contract and additional tests.
 
 `SIGTERM` sets a worker event and lets the current short operation return. The
-API shuts down its listener and waits for request threads. Socket, database and
-proxy timeouts bound routine waits. Compose's init process forwards signals and
-reaps children; stop grace periods define when the engine may force termination.
+API shuts down its listener, interrupts active client sockets and drains request
+threads under database timeouts. Its absolute socket deadline also bounds clients
+that drip headers or bodies. nginx's body buffering and inactivity timeout are a
+separate boundary; no end-to-end slow-client deadline is claimed. Compose's init
+process forwards signals and reaps children; stop grace periods define when the
+engine may force termination.
 An accepted row remains durable even if the client loses the response and retries
 the same key.
 
@@ -88,12 +91,24 @@ no compiler toolchain added by this build, no credential-bearing build argument,
 and no registry push.
 
 Compose gives each service its own process and mount namespaces while sharing
-the guest kernel. Networks are bridge-backed container network namespaces;
-Docker DNS resolves service names. nginx joins only `frontend`; PostgreSQL and
-Valkey join only `backend`; the API joins both. The worker needs only `backend`.
-Both networks are internal. The guest-local published proxy port is the sole
-application ingress. Container namespace isolation does not replace the VM
-boundary, and internal networks do not protect against a compromised guest root.
+the guest kernel. Docker DNS resolves service names across the configured bridge
+networks. Their actual membership is:
+
+| Network | Members | Boundary |
+| --- | --- | --- |
+| `edge` | nginx proxy only | Normal bridge for publishing; permits proxy egress |
+| `frontend` | nginx proxy, API | Internal proxy-to-application network |
+| `backend` | API, worker, PostgreSQL, Valkey, migration and seed | Internal data-service network |
+
+The proxy's sole published port maps guest `127.0.0.1:8080` to container `8080`.
+The edge bridge also defaults published bindings to loopback. No application port
+is forwarded from the VM to macOS, and no database/cache port is published.
+A normal bridge is not itself a public service exposure; the port mapping's host
+address determines its bound interface under this profile's default NAT behavior.
+See [Docker port publishing](https://docs.docker.com/engine/network/port-publishing/).
+This profile permits proxy egress and is not a complete outbound filtering policy.
+Container namespaces and internal networks do not protect against compromised
+guest root; VZ supplies the surrounding VM boundary.
 
 Memory, CPU and PID fields are enforced through Linux cgroups when supported by
 the engine; inspection and real integration must establish effective limits.
@@ -109,18 +124,18 @@ it. Volume persistence is not backup or recovery proof.
 PostgreSQL health precedes migration; successful migration precedes application
 startup. Initial API startup also waits for cache health, while runtime cache
 failure is tolerated. nginx starts after API readiness and resolves the upstream
-through Docker DNS so replacement addresses can be discovered. Its process
-health check is weaker than end-to-end readiness; the integration client must
-also request the API through the proxy.
+through Docker DNS so replacement addresses can be discovered.
+`containers/proxy-health.sh` opens a Bash TCP socket inside the proxy container,
+requests `/health/ready` through nginx and requires an HTTP 200 status. Compose
+bounds that probe to three seconds. This checks nginx-to-API readiness, including
+the database/schema dependency, rather than merely the nginx PID.
+
+The separate integration client connects from the guest to published
+`127.0.0.1:8080`. It must still demonstrate that path: a successful probe inside a
+container does not establish guest-loopback port publishing. During a deliberate
+database outage, liveness and readiness retain distinct semantics even if the
+proxy/API health status becomes unhealthy.
 
 API logs carry generated request IDs, fixed route names, HTTP status and elapsed
 milliseconds. Worker logs carry event names and job IDs. These are useful local
 signals, not distributed tracing, an SLO, a benchmark or an alerting system.
-
-The proxy also joins a dedicated `edge` bridge, needed for guest-loopback port
-publishing. Only the proxy joins that network; the API, database, worker and cache
-remain on internal application networks. The edge permits proxy egress but binds
-the single published port to 127.0.0.1, with no forwarding from the VM to macOS.
-The proxy health probe performs HTTP through nginx to application readiness. See
-[Docker port publishing](https://docs.docker.com/engine/network/port-publishing/)
-for the distinction between a bridge and an explicitly loopback-bound port.

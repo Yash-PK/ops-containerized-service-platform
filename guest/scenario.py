@@ -104,6 +104,21 @@ def inventory(ctx, *, require_volume=True):
     return records
 
 
+def process_uids(output):
+    lines = output.splitlines()
+    if not lines or lines[0].split()[:2] != ["UID", "PID"] or len(lines) < 2:
+        raise LabError("Process inspection requires UID/PID columns and live processes")
+    values = []
+    for line in lines[1:]:
+        fields = line.split(maxsplit=2)
+        if len(fields) != 3 or not fields[0].isdigit() or not fields[1].isdigit():
+            raise LabError("Malformed numeric process identity")
+        if int(fields[1]) <= 0:
+            raise LabError("Process PID must be positive")
+        values.append(int(fields[0]))
+    return values
+
+
 def execute(ctx):
     kernel = json.loads((ROOT / "packages.lock.json").read_text())["expected_kernel"]
     ctx.check("patched_kernel_booted", platform.release() == kernel)
@@ -243,9 +258,15 @@ def execute(ctx):
                 else {}
             ),
         )
-        top = ctx.docker(["top", item["Id"], "-eo", "uid,args"], label="processes-" + service)
-        uids = [line.split()[0] for line in top.splitlines()[1:] if line.strip()]
-        ctx.check(service + "_runtime_nonroot", bool(uids) and all(uid != "0" for uid in uids))
+        realized = {
+            port: bindings
+            for port, bindings in (item["NetworkSettings"].get("Ports") or {}).items()
+            if bindings
+        }
+        ctx.check(service + "_realized_private_ports", realized == ports)
+        top = ctx.docker(["top", item["Id"], "-eo", "uid,pid,args"], label="processes-" + service)
+        uids = process_uids(top)
+        ctx.check(service + "_runtime_nonroot", bool(uids) and all(uid != 0 for uid in uids))
     for name in ("backend", "frontend"):
         net = json.loads(
             ctx.docker(["network", "inspect", LAB_ID + "_" + name], label="network-" + name)
@@ -256,6 +277,32 @@ def execute(ctx):
         "edge_only_proxy",
         edge["Internal"] is False and set(edge["Containers"]) == {container(ctx, "proxy")["Id"]},
     )
+    versions = ctx.compose(
+        [
+            "exec",
+            "--no-TTY",
+            "api",
+            "python",
+            "-c",
+            "import json,platform,psycopg,valkey; print(json.dumps({"
+            "'python':platform.python_version(),"
+            "'psycopg':psycopg.__version__,'libpq':psycopg.pq.version(),'valkey':valkey.__version__}))",
+        ],
+        label="application-versions",
+    )
+    ctx.report["application_versions"] = json.loads(versions)
+    ctx.check(
+        "application_versions_pinned",
+        ctx.report["application_versions"]["python"] == "3.14.7"
+        and ctx.report["application_versions"]["psycopg"] == "3.3.6"
+        and ctx.report["application_versions"]["valkey"] == "6.1.1",
+    )
+    image = json.loads(
+        ctx.docker(
+            ["image", "inspect", "ops-container-platform-app:local"], label="application-image"
+        )
+    )[0]
+    ctx.report["application_image_id"] = image["Id"]
     ctx.report["workload"] = {
         "kind": "synthetic UTF-8 text analysis",
         "accepted_job_id": job_id,

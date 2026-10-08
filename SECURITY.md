@@ -2,8 +2,9 @@
 
 This service processes synthetic data in one disposable, locally owned lab. It
 has no user authentication or tenant boundary and must not be exposed publicly.
-Guest-loopback HTTP and internal Compose networks are the configured scope;
-network isolation is not transport encryption.
+HTTP is bound to guest loopback. Application/data traffic uses internal Compose
+networks; only the proxy also joins a normal `edge` bridge for port publishing.
+Network isolation is not transport encryption.
 
 ## Threat assumptions and controls
 
@@ -13,12 +14,26 @@ owned VM. Access to its socket is equivalent to guest administration. No socket
 is mounted into an application container or exposed over TCP, and no existing
 host Docker context is adopted.
 
+The `edge` bridge permits outbound traffic from nginx; this profile is not a
+complete egress-denial policy. Only the proxy joins it, and the single published
+port has the explicit guest-local mapping `127.0.0.1:8080:8080`. `frontend` and
+`backend` remain internal; database and cache ports are unpublished. The VM
+forwards no application port to macOS. A bridge's membership and a published
+port's bind address are distinct controls, as described in
+[Docker's networking documentation](https://docs.docker.com/engine/network/port-publishing/).
+Compromised guest root or proxy code remains outside the isolation guarantees of
+this trusted local reference lab.
+
 The API treats text, keys, IDs, JSON and HTTP framing as untrusted input. It
 limits text to 4096 UTF-8 bytes, caps HTTP bodies and concurrent request threads,
 uses finite I/O timeouts, rejects invalid identifiers and parameterizes SQL.
 The workload does not execute submitted programs, shell commands, files or URLs.
 Input validation does not make this HTTP implementation a general-purpose
-internet service.
+internet service. The Python server's absolute deadline applies to its own
+accepted sockets. nginx buffers request bodies and its client-body timeout is an
+inactivity timeout, so this is not an end-to-end five-second slow-client
+guarantee. Internet-facing denial-of-service protection and authentication would
+require a separately designed and tested deployment.
 
 The application role cannot create roles/databases or act as a superuser. The
 migration has separate administrative access. Capabilities, root-filesystem
@@ -80,17 +95,3 @@ available, open an issue requesting one without exploit details, credentials or
 private logs. Include the affected revision, synthetic reproduction and expected
 boundary. Never paste a token or password into an issue. There is no guaranteed
 response SLA or supported production deployment.
-
-The Python server imposes an absolute deadline on its own accepted sockets. nginx
-buffers request bodies and its client-body timeout is an inactivity timeout, so
-this is not an end-to-end five-second slow-client guarantee. The proxy is bound
-only inside the private lab guest; internet-facing denial-of-service protection
-and authentication require a separately designed and tested deployment.
-
-The proxy also joins a dedicated `edge` bridge, needed for guest-loopback port
-publishing. Only the proxy joins that network; the API, database, worker and cache
-remain on internal application networks. The edge permits proxy egress but binds
-the single published port to 127.0.0.1, with no forwarding from the VM to macOS.
-The proxy health probe performs HTTP through nginx to application readiness. See
-[Docker port publishing](https://docs.docker.com/engine/network/port-publishing/)
-for the distinction between a bridge and an explicitly loopback-bound port.

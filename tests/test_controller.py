@@ -34,6 +34,24 @@ class SafetyTests(unittest.TestCase):
                 with self.assertRaises(common.LabError):
                     common.Context()
 
+    def test_process_identity_parser_requires_pid_and_numeric_uids(self):
+        from guest.common import LabError
+        from guest.scenario import process_uids
+
+        self.assertEqual(
+            process_uids("UID PID COMMAND\n10001 22 python -m opsjobs.worker"), [10001]
+        )
+        self.assertEqual(process_uids("UID PID COMMAND\n0 1 postgres"), [0])
+        for value in (
+            "UID COMMAND\n10001 python",
+            "UID PID COMMAND",
+            "",
+            "UID PID COMMAND\nroot 10 postgres",
+            "UID PID COMMAND\n999 0 postgres",
+        ):
+            with self.subTest(value=value), self.assertRaises(LabError):
+                process_uids(value)
+
     def test_exact_target_and_confirmation(self):
         lab.target(lab.LAB_ID, None, False)
         lab.target(lab.LAB_ID, lab.LAB_ID, True)

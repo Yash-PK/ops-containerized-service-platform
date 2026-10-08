@@ -19,7 +19,10 @@ macOS `localhost:8080` endpoint after the command returns.
 ## What the audience should observe
 
 1. A pinned image build, ready PostgreSQL, successful migration, cache, API and
-   proxy start. The worker is deliberately absent for the first submission.
+   proxy start. The proxy probe requests API readiness through nginx, then the
+   guest-local client separately exercises the published loopback path. Only the
+   proxy joins the normal edge bridge; frontend/backend remain internal. The
+   worker is deliberately absent for the first submission.
 2. `POST /jobs` accepts a synthetic text and returns `202` with a real queued ID.
    Polling leaves it queued. A repeat key returns the same ID; different content
    with that key returns `409`; invalid input is rejected.
