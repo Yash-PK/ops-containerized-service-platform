@@ -1,0 +1,1126 @@
+{
+  "schema_version": 1,
+  "lab_id": "ops-container-platform-reference",
+  "revision": "3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6",
+  "code_fingerprint": "2d02d563e250b498d07b3695894a21d825bc7310c6ed47bd2afc3ee55b1a2f2b",
+  "development": false,
+  "started_at": "2026-10-08T07:14:49.280112+00:00",
+  "environment": {
+    "os": "Darwin",
+    "arch": "arm64",
+    "python": "3.14.7",
+    "vm_cpu": 2,
+    "vm_memory_gib": 2,
+    "vm_disk_gib_sparse": 24
+  },
+  "phases": {
+    "prepare": {
+      "schema_version": 1,
+      "lab_id": "ops-container-platform-reference",
+      "started_at": "2026-10-08T07:15:04.309391+00:00",
+      "assertions": [
+        {
+          "name": "ubuntu_24_04",
+          "passed": true
+        },
+        {
+          "name": "native_arm64",
+          "passed": true
+        },
+        {
+          "name": "signed_snapshot_selected",
+          "passed": true
+        },
+        {
+          "name": "pinned_openssl",
+          "passed": true
+        },
+        {
+          "name": "pinned_iproute2",
+          "passed": true
+        },
+        {
+          "name": "pinned_nftables",
+          "passed": true
+        },
+        {
+          "name": "pinned_libssl3t64",
+          "passed": true
+        },
+        {
+          "name": "pinned_apparmor",
+          "passed": true
+        },
+        {
+          "name": "pinned_libapparmor1",
+          "passed": true
+        },
+        {
+          "name": "pinned_libpython3.12-minimal",
+          "passed": true
+        },
+        {
+          "name": "pinned_libpython3.12-stdlib",
+          "passed": true
+        },
+        {
+          "name": "pinned_libpython3.12t64",
+          "passed": true
+        },
+        {
+          "name": "pinned_linux-image-6.8.0-146-generic",
+          "passed": true
+        },
+        {
+          "name": "pinned_linux-image-generic",
+          "passed": true
+        },
+        {
+          "name": "pinned_linux-modules-6.8.0-146-generic",
+          "passed": true
+        },
+        {
+          "name": "pinned_linux-modules-extra-6.8.0-146-generic",
+          "passed": true
+        },
+        {
+          "name": "pinned_openssh-client",
+          "passed": true
+        },
+        {
+          "name": "pinned_openssh-server",
+          "passed": true
+        },
+        {
+          "name": "pinned_openssh-sftp-server",
+          "passed": true
+        },
+        {
+          "name": "pinned_python3.12",
+          "passed": true
+        },
+        {
+          "name": "pinned_python3.12-minimal",
+          "passed": true
+        },
+        {
+          "name": "pinned_systemd",
+          "passed": true
+        }
+      ],
+      "commands": [
+        {
+          "label": "arch",
+          "exit_code": 0
+        },
+        {
+          "label": "apt-update",
+          "exit_code": 0
+        },
+        {
+          "label": "apt-install",
+          "exit_code": 0
+        },
+        {
+          "label": "package-openssl",
+          "exit_code": 0
+        },
+        {
+          "label": "package-iproute2",
+          "exit_code": 0
+        },
+        {
+          "label": "package-nftables",
+          "exit_code": 0
+        },
+        {
+          "label": "package-libssl3t64",
+          "exit_code": 0
+        },
+        {
+          "label": "package-apparmor",
+          "exit_code": 0
+        },
+        {
+          "label": "package-libapparmor1",
+          "exit_code": 0
+        },
+        {
+          "label": "package-libpython3.12-minimal",
+          "exit_code": 0
+        },
+        {
+          "label": "package-libpython3.12-stdlib",
+          "exit_code": 0
+        },
+        {
+          "label": "package-libpython3.12t64",
+          "exit_code": 0
+        },
+        {
+          "label": "package-linux-image-6.8.0-146-generic",
+          "exit_code": 0
+        },
+        {
+          "label": "package-linux-image-generic",
+          "exit_code": 0
+        },
+        {
+          "label": "package-linux-modules-6.8.0-146-generic",
+          "exit_code": 0
+        },
+        {
+          "label": "package-linux-modules-extra-6.8.0-146-generic",
+          "exit_code": 0
+        },
+        {
+          "label": "package-openssh-client",
+          "exit_code": 0
+        },
+        {
+          "label": "package-openssh-server",
+          "exit_code": 0
+        },
+        {
+          "label": "package-openssh-sftp-server",
+          "exit_code": 0
+        },
+        {
+          "label": "package-python3.12",
+          "exit_code": 0
+        },
+        {
+          "label": "package-python3.12-minimal",
+          "exit_code": 0
+        },
+        {
+          "label": "package-systemd",
+          "exit_code": 0
+        }
+      ],
+      "expected_kernel": "6.8.0-146-generic",
+      "passed": true,
+      "command_passed": true
+    },
+    "compose": {
+      "schema_version": 1,
+      "lab_id": "ops-container-platform-reference",
+      "started_at": "2026-10-08T07:18:51.518864+00:00",
+      "assertions": [
+        {
+          "name": "patched_kernel_booted",
+          "passed": true
+        },
+        {
+          "name": "engine_platform",
+          "passed": true
+        },
+        {
+          "name": "no_foreign_docker_socket",
+          "passed": true
+        },
+        {
+          "name": "engine_version_pinned",
+          "passed": true
+        },
+        {
+          "name": "engine_label",
+          "passed": true
+        },
+        {
+          "name": "engine_private_data",
+          "passed": true
+        },
+        {
+          "name": "engine_apparmor",
+          "passed": true
+        },
+        {
+          "name": "compose_pinned",
+          "passed": true
+        },
+        {
+          "name": "buildx_pinned",
+          "passed": true
+        },
+        {
+          "name": "submit_accepted",
+          "passed": true
+        },
+        {
+          "name": "separate_worker_required",
+          "passed": true
+        },
+        {
+          "name": "idempotency_replay",
+          "passed": true
+        },
+        {
+          "name": "idempotency_conflict",
+          "passed": true
+        },
+        {
+          "name": "invalid_payload_rejected",
+          "passed": true
+        },
+        {
+          "name": "worker_actual_digest",
+          "passed": true
+        },
+        {
+          "name": "completed_result_cache_hit",
+          "passed": true
+        },
+        {
+          "name": "data_survives_restart",
+          "passed": true
+        },
+        {
+          "name": "cache_outage_sql_fallback",
+          "passed": true
+        },
+        {
+          "name": "cache_recovered",
+          "passed": true
+        },
+        {
+          "name": "cache_recovery_hit",
+          "passed": true
+        },
+        {
+          "name": "durable_before_outage",
+          "passed": true
+        },
+        {
+          "name": "database_outage_write_503",
+          "passed": true
+        },
+        {
+          "name": "database_outage_bounded",
+          "passed": true
+        },
+        {
+          "name": "live_during_database_outage",
+          "passed": true
+        },
+        {
+          "name": "unready_during_database_outage",
+          "passed": true
+        },
+        {
+          "name": "api_sigterm_clean_exit",
+          "passed": true
+        },
+        {
+          "name": "accepted_job_survives_outage_and_shutdown",
+          "passed": true
+        },
+        {
+          "name": "migration_idempotent",
+          "passed": true
+        },
+        {
+          "name": "seed_idempotent",
+          "passed": true
+        },
+        {
+          "name": "sql_integration",
+          "passed": true
+        },
+        {
+          "name": "worker_memory_limit",
+          "passed": true
+        },
+        {
+          "name": "worker_cpu_limit",
+          "passed": true
+        },
+        {
+          "name": "worker_no_privileged",
+          "passed": true
+        },
+        {
+          "name": "worker_apparmor",
+          "passed": true
+        },
+        {
+          "name": "worker_private_ports",
+          "passed": true
+        },
+        {
+          "name": "worker_realized_private_ports",
+          "passed": true
+        },
+        {
+          "name": "worker_runtime_nonroot",
+          "passed": true
+        },
+        {
+          "name": "proxy_memory_limit",
+          "passed": true
+        },
+        {
+          "name": "proxy_cpu_limit",
+          "passed": true
+        },
+        {
+          "name": "proxy_no_privileged",
+          "passed": true
+        },
+        {
+          "name": "proxy_apparmor",
+          "passed": true
+        },
+        {
+          "name": "proxy_private_ports",
+          "passed": true
+        },
+        {
+          "name": "proxy_realized_private_ports",
+          "passed": true
+        },
+        {
+          "name": "proxy_runtime_nonroot",
+          "passed": true
+        },
+        {
+          "name": "api_memory_limit",
+          "passed": true
+        },
+        {
+          "name": "api_cpu_limit",
+          "passed": true
+        },
+        {
+          "name": "api_no_privileged",
+          "passed": true
+        },
+        {
+          "name": "api_apparmor",
+          "passed": true
+        },
+        {
+          "name": "api_private_ports",
+          "passed": true
+        },
+        {
+          "name": "api_realized_private_ports",
+          "passed": true
+        },
+        {
+          "name": "api_runtime_nonroot",
+          "passed": true
+        },
+        {
+          "name": "migration_success",
+          "passed": true
+        },
+        {
+          "name": "database_memory_limit",
+          "passed": true
+        },
+        {
+          "name": "database_cpu_limit",
+          "passed": true
+        },
+        {
+          "name": "database_no_privileged",
+          "passed": true
+        },
+        {
+          "name": "database_apparmor",
+          "passed": true
+        },
+        {
+          "name": "database_private_ports",
+          "passed": true
+        },
+        {
+          "name": "database_realized_private_ports",
+          "passed": true
+        },
+        {
+          "name": "database_runtime_nonroot",
+          "passed": true
+        },
+        {
+          "name": "cache_memory_limit",
+          "passed": true
+        },
+        {
+          "name": "cache_cpu_limit",
+          "passed": true
+        },
+        {
+          "name": "cache_no_privileged",
+          "passed": true
+        },
+        {
+          "name": "cache_apparmor",
+          "passed": true
+        },
+        {
+          "name": "cache_private_ports",
+          "passed": true
+        },
+        {
+          "name": "cache_realized_private_ports",
+          "passed": true
+        },
+        {
+          "name": "cache_runtime_nonroot",
+          "passed": true
+        },
+        {
+          "name": "backend_internal",
+          "passed": true
+        },
+        {
+          "name": "frontend_internal",
+          "passed": true
+        },
+        {
+          "name": "edge_only_proxy",
+          "passed": true
+        },
+        {
+          "name": "application_versions_pinned",
+          "passed": true
+        },
+        {
+          "name": "containers_removed",
+          "passed": true
+        },
+        {
+          "name": "database_volume_removed",
+          "passed": true
+        }
+      ],
+      "commands": [
+        {
+          "label": "engine-unit-load",
+          "exit_code": 0
+        },
+        {
+          "label": "engine-start",
+          "exit_code": 0
+        },
+        {
+          "label": "engine-info",
+          "exit_code": 0
+        },
+        {
+          "label": "compose-version",
+          "exit_code": 0
+        },
+        {
+          "label": "buildx-version",
+          "exit_code": 0
+        },
+        {
+          "label": "compose-config",
+          "exit_code": 0
+        },
+        {
+          "label": "app-build",
+          "exit_code": 0
+        },
+        {
+          "label": "service-pull",
+          "exit_code": 0
+        },
+        {
+          "label": "start-without-worker",
+          "exit_code": 0
+        },
+        {
+          "label": "start-worker",
+          "exit_code": 0
+        },
+        {
+          "label": "restart-persistent-services",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-worker",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-worker",
+          "exit_code": 0
+        },
+        {
+          "label": "stop-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "recover-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "id-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "id-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "id-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "id-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "id-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "id-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "stop-worker-for-durability",
+          "exit_code": 0
+        },
+        {
+          "label": "stop-database",
+          "exit_code": 0
+        },
+        {
+          "label": "recover-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "id-database",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-database",
+          "exit_code": 0
+        },
+        {
+          "label": "graceful-api-stop",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "recover-applications",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-api",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-api",
+          "exit_code": 0
+        },
+        {
+          "label": "id-worker",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-worker",
+          "exit_code": 0
+        },
+        {
+          "label": "migration-repeat",
+          "exit_code": 0
+        },
+        {
+          "label": "seed-first",
+          "exit_code": 0
+        },
+        {
+          "label": "seed-repeat",
+          "exit_code": 0
+        },
+        {
+          "label": "sql-integration",
+          "exit_code": 0
+        },
+        {
+          "label": "verify-engine",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-containers",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-details",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-volume-names",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-volume",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network-names",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network",
+          "exit_code": 0
+        },
+        {
+          "label": "processes-worker",
+          "exit_code": 0
+        },
+        {
+          "label": "processes-proxy",
+          "exit_code": 0
+        },
+        {
+          "label": "processes-api",
+          "exit_code": 0
+        },
+        {
+          "label": "processes-database",
+          "exit_code": 0
+        },
+        {
+          "label": "processes-cache",
+          "exit_code": 0
+        },
+        {
+          "label": "network-backend",
+          "exit_code": 0
+        },
+        {
+          "label": "network-frontend",
+          "exit_code": 0
+        },
+        {
+          "label": "network-edge",
+          "exit_code": 0
+        },
+        {
+          "label": "id-proxy",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect-proxy",
+          "exit_code": 0
+        },
+        {
+          "label": "application-versions",
+          "exit_code": 0
+        },
+        {
+          "label": "application-image",
+          "exit_code": 0
+        },
+        {
+          "label": "verify-engine",
+          "exit_code": 0
+        },
+        {
+          "label": "verify-engine",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-containers",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-details",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-volume-names",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-volume",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network-names",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network",
+          "exit_code": 0
+        },
+        {
+          "label": "inventory-network",
+          "exit_code": 0
+        },
+        {
+          "label": "compose-owned-teardown",
+          "exit_code": 0
+        },
+        {
+          "label": "cleanup-containers",
+          "exit_code": 0
+        },
+        {
+          "label": "cleanup-volumes",
+          "exit_code": 0
+        },
+        {
+          "label": "engine-stop",
+          "exit_code": 0
+        }
+      ],
+      "kernel": "6.8.0-146-generic",
+      "engine": {
+        "version": "29.8.2",
+        "plugins": {
+          "compose": "Docker Compose version v5.6.0",
+          "buildx": "github.com/docker/buildx v0.38.0 0dbe87f36ed472fe36b6796c3f70b4210a731fc5"
+        },
+        "architecture": "aarch64",
+        "cgroup_version": "2",
+        "security_options": [
+          "name=apparmor,profile=default",
+          "name=seccomp,profile=builtin",
+          "name=cgroupns"
+        ]
+      },
+      "sql_integration": {
+        "schema_version": 1,
+        "lab_id": "ops-container-platform-reference",
+        "profile": "real-postgresql",
+        "started_at": "2026-10-08T07:20:16.618445+00:00",
+        "migration_sha256": "b8eb8a8df6b9623e2e48b008f74da257ccf0fdac70727870e83bebf33fa850bd",
+        "assertions": [
+          {
+            "name": "owned-application-database",
+            "passed": true
+          },
+          {
+            "name": "schema-collision-absent",
+            "passed": true
+          },
+          {
+            "name": "normal-app-role-in-isolated-schema",
+            "passed": true
+          },
+          {
+            "name": "concurrent-idempotency-one-durable-row",
+            "passed": true
+          },
+          {
+            "name": "idempotency-content-conflict-rejected",
+            "passed": true
+          },
+          {
+            "name": "concurrent-submissions-created-exactly-one-row",
+            "passed": true
+          },
+          {
+            "name": "first-claim-owns-fixture",
+            "passed": true
+          },
+          {
+            "name": "expired-lease-reclaimed-with-new-token",
+            "passed": true
+          },
+          {
+            "name": "stale-completion-fenced",
+            "passed": true
+          },
+          {
+            "name": "stale-retry-fenced",
+            "passed": true
+          },
+          {
+            "name": "current-lease-completes",
+            "passed": true
+          },
+          {
+            "name": "reclaimed-result-persisted",
+            "passed": true
+          },
+          {
+            "name": "bounded-retry-claim-1",
+            "passed": true
+          },
+          {
+            "name": "bounded-retry-claim-2",
+            "passed": true
+          },
+          {
+            "name": "bounded-retry-claim-3",
+            "passed": true
+          },
+          {
+            "name": "retry-limit-prevents-fourth-claim",
+            "passed": true
+          },
+          {
+            "name": "retry-exhaustion-durable-failure",
+            "passed": true
+          },
+          {
+            "name": "transaction-failure-injected-after-insert",
+            "passed": true
+          },
+          {
+            "name": "failed-enqueue-transaction-rolled-back",
+            "passed": true
+          },
+          {
+            "name": "enqueue-recovers-after-rollback",
+            "passed": true
+          },
+          {
+            "name": "owned-schema-removed",
+            "passed": true
+          }
+        ],
+        "cleanup_passed": true,
+        "passed": true,
+        "postgresql_version": "18.6 (Debian 18.6-1.pgdg13+2)",
+        "finished_at": "2026-10-08T07:20:16.753982+00:00"
+      },
+      "application_versions": {
+        "python": "3.14.7",
+        "psycopg": "3.3.6",
+        "libpq": 180006,
+        "valkey": "6.1.1"
+      },
+      "application_image_id": "sha256:738e5714a85aa88305e5aa09fd7aff64de5cbca0157d9e455b6b6d6f2b442852",
+      "workload": {
+        "kind": "synthetic UTF-8 text analysis",
+        "accepted_job_id": "c747d7c5-4701-4b9f-bbcb-6b31a1cecc71",
+        "result": {
+          "bytes": 48,
+          "lines": 2,
+          "words": 6,
+          "sha256": "bcb80fb2a9a76c3a18f1c460010cd57f49c8608042d2e4c9944bbccd728b187b",
+          "characters": 48
+        }
+      },
+      "completed_at": "2026-10-08T07:20:17Z",
+      "cleanup": "passed",
+      "passed": true,
+      "command_passed": true
+    }
+  },
+  "transfer": {
+    "sha256": "cc264607af4d3d49636a33f6372c7b60a8bcd6b978be7f3383bebed96c05d30f",
+    "encoded_bytes": 54532,
+    "parts": 7,
+    "max_command_bytes": 11769,
+    "completed_commands": [
+      "upload-start",
+      "upload-part-0000",
+      "upload-part-0001",
+      "upload-part-0002",
+      "upload-part-0003",
+      "upload-part-0004",
+      "upload-part-0005",
+      "upload-part-0006",
+      "install-payload"
+    ],
+    "passed": true
+  },
+  "passed": true,
+  "vm_cleanup": "passed",
+  "finished_at": "2026-10-08T07:20:20.844680+00:00"
+}

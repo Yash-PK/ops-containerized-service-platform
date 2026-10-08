@@ -36,12 +36,15 @@ guarantee. Internet-facing denial-of-service protection and authentication would
 require a separately designed and tested deployment.
 
 The application role cannot create roles/databases or act as a superuser. The
-migration has separate administrative access. Capabilities, root-filesystem
-writes, PIDs, memory and CPU are constrained for application services; PostgreSQL
-retains the initialization behavior its official image requires. The runtime
-checks process identities and effective settings instead of inferring isolation
-from configuration alone. AppArmor remains enabled; no unconfined workaround is
-part of the supported profile.
+migration has separate administrative access. Compose configures capability drops,
+read-only root filesystems, no-new-privileges and PID/resource limits for the
+application services; PostgreSQL retains its image's initialization behavior.
+The runtime assertions check non-root live processes, memory/CPU bounds,
+non-privileged execution, AppArmor and requested/realized port mappings. Exact
+per-service UIDs, capability drops, read-only roots, no-new-privileges, PID limits,
+tmpfs sizing and log/grace settings are not individually asserted live in this
+core. Their configuration is not additional runtime evidence. AppArmor remains
+enabled; no unconfined workaround is part of the supported profile.
 
 ## Credentials, input and logs
 

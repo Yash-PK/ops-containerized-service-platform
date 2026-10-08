@@ -1,9 +1,38 @@
 # Validation record
 
-Project 4 is in implementation. No release or container integration pass is claimed.
-The controller tests execute HTTP socket behavior, payload validation, cache fallback,
-worker fencing calls and guard/credential/file-boundary cases. They do not prove SQL
-or container behavior. The exact number is recorded by the actual unittest output.
+The bounded local core passed at source
+`3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`, implementation fingerprint
+`2d02d563e250b498d07b3695894a21d825bc7310c6ed47bd2afc3ee55b1a2f2b`.
+Publication, hosted CI and release remain pending. Evidence/documentation commits
+after this source do not become the original tested revision.
+
+| Profile | Actual result | Report |
+| --- | --- | --- |
+| Controller, macOS ARM64 / Python 3.14.7 | Doctor, lint/docs/config, 71 unit/controller/safety tests, safe demo and working/staged/history secret scans passed; clean source remained unchanged | [Controller](../evidence/3d58b9f7107f-controller.json) |
+| Standalone temporary clone | Locked bootstrap, doctor, validation, demo and security passed; clone stayed clean and was removed | [Clean clone](../evidence/3d58b9f7107f-clean-clone.json) |
+| Real Ubuntu ARM64 VZ / Docker Compose | 22 preparation commands/assertions, 117 Compose commands, 72 Compose assertions and all 21 nested real SQL assertions passed; guest resources and VM removed | [Formal VM](../evidence/3d58b9f7107f-compose-vm.json) |
+
+The formal VM ran from `2026-10-08T07:14:49.280112+00:00` to
+`2026-10-08T07:20:20.844680+00:00`, using 2 CPUs, 2 GiB RAM and a 24 GiB sparse
+disk. Signed package preparation, cold boot into `6.8.0-146-generic`, authenticated
+bounded upload, engine ownership and application lifecycle all passed. Observed
+versions were Docker 29.8.2, Compose 5.6.0, Buildx 0.38.0, Python 3.14.7,
+Psycopg 3.3.6, libpq 18.6 (`180006`) and valkey-py 6.1.1.
+
+The scenario observed asynchronous completion, key replay/conflict rejection,
+restart persistence, cache hits/failure/recovery, bounded database outage and
+recovery, API SIGTERM exit 0, migration/seed idempotence, non-root live services,
+memory/CPU bounds, AppArmor, internal networks and guest-loopback realized ports.
+SQL assertions covered concurrent acceptance, leases/fencing, retry exhaustion,
+transaction rollback and owned-schema cleanup. Compose cleanup and VM deletion
+passed; the provider inventory was empty afterward. Ignored download/tools caches
+may remain. This is functional lab evidence, not a capacity, availability or
+disaster-recovery measurement.
+
+Exact configured UIDs and individual PID/tmpfs/log/grace/read-only/capability
+settings were not separately asserted live. Worker signal handling is implemented,
+but its graceful-exit status was not asserted; the API assertion is distinct.
+No cloud, rootless Podman or additional host/container architecture is claimed.
 
 Required publication evidence: a clean committed source, controller report, temporary
 clone report and a real Compose lifecycle report whose implementation fingerprint
@@ -39,7 +68,7 @@ name without creation of the required device; the isolated daemon now uses its
 normal default bridge. Startup diagnostics now retain the unit journal privately.
 The same review moved all nginx temporary paths onto its bounded writable tmpfs
 and changed PostgreSQL health to TCP, preventing socket-only initialization from
-satisfying the migration dependency. These changes still require a new real run.
+satisfying the migration dependency. The later complete formal run exercised these changes.
 
 The third run (`20261008T064506703400-development.json`) started the pinned engine,
 built the application, pulled the service images and applied migration 1. Compose
@@ -47,7 +76,8 @@ reported services ready, but the first guest-loopback HTTP connection was refuse
 Its process-only proxy health check had not proved the client path. The proxy now
 has an HTTP readiness probe and a dedicated normal bridge for loopback publishing;
 API/database/cache remain on the two internal networks. Both Compose teardown and
-VM deletion passed on the failed run. Real acceptance remains pending.
+VM deletion passed on the failed run. Real acceptance was still pending at that
+stage; the later complete formal report now supplies it.
 
 The fourth run (`20261008T065059048620-development.json`) passed real asynchronous
 completion, replay/conflict checks, cache hits and outage fallback/recovery,
@@ -73,6 +103,7 @@ a VM, sends at most 8,000 encoded bytes per part, and caps each shell-quoted SSH
 command at 16,000 bytes. The guest verifies staging ownership, sequence, part and
 whole-payload checksums before installation. Fixture tests exercise corruption,
 foreign files, symlinks, unsafe modes and interrupted transfer cleanup. This fix
-still needs a fresh formal VM run. Neither passing controller checks nor the
+was exercised successfully in the later formal run recorded above. Neither
+passing controller checks nor the
 previous partial workflow turns the failed report into release proof. Its tested
 revision and failure remain preserved.

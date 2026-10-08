@@ -1,6 +1,10 @@
 # Bounded core acceptance — defined before implementation
 
-Status: acceptance/dependency review; no container integration claim yet.
+Status: bounded local core passed formal controller, standalone clean-clone and
+real Compose acceptance at `3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`.
+Publication, exact-head hosted CI and release remain pending. This checklist was
+defined before implementation; [validation](validation.md) records the observed
+scope, failed attempts and remaining limitations.
 
 ## Reference workload
 

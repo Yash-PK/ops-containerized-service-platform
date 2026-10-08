@@ -57,6 +57,12 @@ engine may force termination.
 An accepted row remains durable even if the client loses the response and retries
 the same key.
 
+The live scenario explicitly asserts the API's zero exit status after SIGTERM;
+credit that observation only when its recorded assertion passes. Worker signal
+handling is implemented and the scenario stops/restarts it, but it does not
+assert the worker's stop exit status or prove graceful completion of an in-flight
+job. Durable lease recovery is a separate SQL behavior from graceful process exit.
+
 ## Schema, roles and cache
 
 `opsjobs.migrate` serializes migration transactions with an advisory lock and
@@ -110,10 +116,13 @@ This profile permits proxy egress and is not a complete outbound filtering polic
 Container namespaces and internal networks do not protect against compromised
 guest root; VZ supplies the surrounding VM boundary.
 
-Memory, CPU and PID fields are enforced through Linux cgroups when supported by
-the engine; inspection and real integration must establish effective limits.
-Most services have a read-only root filesystem with bounded `/tmp` tmpfs,
-capabilities dropped and `no-new-privileges`. PostgreSQL needs its writable data
+Memory, CPU and PID fields configure Linux cgroup limits. The runtime assertions
+inspect positive bounded memory/CPU settings, non-privileged execution, AppArmor,
+non-root process UIDs and effective port mappings. They do not compare exact
+per-service UIDs or individually verify PID limits, tmpfs size, log rotation and
+stop grace periods. Most services are configured with a read-only root filesystem,
+bounded `/tmp` tmpfs, dropped capabilities and `no-new-privileges`; those fields
+are not individually asserted live either. PostgreSQL needs its writable data
 volume and initialization behavior. It persists under `/var/lib/postgresql`,
 matching the official PostgreSQL 18 image layout. Restarting a container reuses
 that named volume; deleting the confirmed disposable lab intentionally removes

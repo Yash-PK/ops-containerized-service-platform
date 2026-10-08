@@ -5,11 +5,13 @@ PostgreSQL, and completes them in a separate worker. Valkey caches successful
 results; nginx is the only HTTP entry point. The failure exercise stops individual
 dependencies and checks what the API can still promise.
 
-This is lab engineering work. The application and container configuration are
-implemented; a completed integration report and exact-revision CI are required
-before describing the core as tested or released. See the bounded
-[acceptance checklist](docs/acceptance.md). No production availability, cloud
-deployment, or employment-experience claim is made.
+The bounded local core passed formal controller, clean-clone and real Docker
+Compose validation at source `3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`.
+The VM run passed 139 commands, 94 preparation/lifecycle assertions and 21 nested
+SQL assertions, including scoped cleanup. Publication, hosted CI and a versioned
+release remain pending. See the [validation record](docs/validation.md) and
+[acceptance checklist](docs/acceptance.md). This is lab engineering work; no
+production availability, cloud deployment or employment-experience claim is made.
 
 ```mermaid
 flowchart LR
@@ -129,10 +131,13 @@ controller validation and VM integration have independent states.
 
 ## Security and operational boundaries
 
-Application processes run as UID 10001, Valkey as 999, and nginx as 101. The
-PostgreSQL image initializes its data directory before running the database as
-its unprivileged account. The migration receives owner credentials; the running
-API and worker receive only the application database credential. No database or
+Application processes are configured as UID 10001, Valkey as 999, and nginx as
+101. The PostgreSQL image initializes its data directory before running the database as
+its unprivileged account. The runtime assertion checks that live service processes
+are non-root; it does not compare every process with those exact configured UIDs
+or inspect the exited migration's process identity. The migration receives owner
+credentials; the running API and worker receive only the application database
+credential. No database or
 cache ports are published. Two internal Compose networks separate proxy-to-API
 traffic (`frontend`) from data services (`backend`). Only nginx additionally joins
 `edge`, a normal bridge used for guest-loopback publishing. That bridge permits
@@ -150,10 +155,13 @@ not belong in Git. Logs contain request IDs, route names, status and duration,
 not submitted text or credentials. Read [SECURITY.md](SECURITY.md) before adapting
 the service beyond synthetic local work.
 
-Resource limits are explicit in `compose.json`: memory, CPU, PIDs, temporary
-storage, log rotation and stop grace periods. The runtime profile checks the
-actual engine configuration. These are lab limits, not measured capacity or an
-availability guarantee.
+`compose.json` configures memory, CPU, PID and temporary-storage limits, log
+rotation, stop grace periods, and service-specific filesystem/capability controls.
+The runtime profile asserts memory/CPU bounds, non-privileged execution, AppArmor,
+non-root processes and requested/realized port mappings. PID limits, tmpfs sizing,
+log/grace settings, read-only roots, dropped capabilities and no-new-privileges
+are configuration choices, not individually asserted live controls in this core.
+These lab settings do not establish measured capacity or an availability guarantee.
 
 ## Cleanup, limitations and next work
 

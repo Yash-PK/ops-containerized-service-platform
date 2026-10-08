@@ -33,8 +33,10 @@ macOS `localhost:8080` endpoint after the command returns.
 5. A second accepted job waits while the worker is stopped. A PostgreSQL outage
    causes bounded `503` on new writes, `200` liveness and `503` readiness.
 6. Restoring the database and application completes the previously accepted job.
-   Graceful API shutdown, repeated migration/seed operations, SQL correctness,
-   runtime identities, resource settings and private bindings are asserted.
+   API SIGTERM exit status, repeated migration/seed operations, SQL correctness,
+   non-root process identities, memory/CPU bounds, AppArmor and private bindings
+   are asserted. The worker's graceful-exit status and the other configured
+   resource/hardening fields are not separate live assertions in this core.
 7. The report states each observed assertion and the cleanup outcome. Review
    that report; the presence of a JSON file is not itself a pass.
 

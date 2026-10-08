@@ -13,3 +13,8 @@
 - Document architecture, dependency selection, operational boundaries and
   validation requirements. Integration and publication status follow actual
   evidence; this entry does not declare a released version.
+- Pass formal controller (71 tests), standalone clean-clone and real ARM64
+  Compose lifecycle gates at `3d58b9f7107fa1c7de3eec06b32c9b6f6ce644d6`, including
+  139 commands, 94 preparation/lifecycle assertions, 21 nested SQL assertions and
+  owned cleanup. Preserve four development failures and the earlier formal SSH
+  transfer failure. Hosted CI and a versioned release remain pending.
