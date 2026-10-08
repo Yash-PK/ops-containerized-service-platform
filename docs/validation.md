@@ -30,3 +30,13 @@ private runtime parent mode before credential generation or engine installation.
 fix creates and validates each owned directory at 0700 explicitly; a regression
 checks parent mode and symlink rejection. The VM was deleted successfully. This
 failed run is retained and does not count as container acceptance.
+
+The second development run (`20261008T064105368194-development.json`) passed
+package preparation and cold boot, then the owned Docker unit failed to start.
+VM teardown passed. Its unit journal was not captured, so the exact startup
+cause is not established by that report. Review identified a non-default bridge
+name without creation of the required device; the isolated daemon now uses its
+normal default bridge. Startup diagnostics now retain the unit journal privately.
+The same review moved all nginx temporary paths onto its bounded writable tmpfs
+and changed PostgreSQL health to TCP, preventing socket-only initialization from
+satisfying the migration dependency. These changes still require a new real run.

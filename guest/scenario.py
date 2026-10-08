@@ -152,11 +152,18 @@ def execute(ctx):
     status, restored = request("GET", "/jobs/" + job_id)
     ctx.check("data_survives_restart", status == 200 and restored == done)
     ctx.compose(["stop", "cache"], label="stop-cache")
-    status, fallback = request("GET", "/jobs/" + job_id)
-    ctx.check("cache_outage_sql_fallback", status == 200 and fallback == done)
+    headers = {}
+    status, fallback = request("GET", "/jobs/" + job_id, headers_out=headers)
+    ctx.check(
+        "cache_outage_sql_fallback",
+        status == 200 and fallback == done and headers.get("x-result-cache") == "miss",
+    )
     ctx.compose(["start", "cache"], label="recover-cache")
     wait_health(ctx, "cache")
     ctx.check("cache_recovered", request("GET", "/jobs/" + job_id)[1] == done)
+    headers = {}
+    request("GET", "/jobs/" + job_id, headers_out=headers)
+    ctx.check("cache_recovery_hit", headers.get("x-result-cache") == "hit")
     ctx.compose(["stop", "worker"], label="stop-worker-for-durability")
     recovery_key = "recovery_" + uuid.uuid4().hex
     status, recovery = request("POST", "/jobs", {"text": TEXT}, recovery_key)

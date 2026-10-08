@@ -82,7 +82,6 @@ def install(ctx):
                 "data-root": str(ROOT / "engine-data"),
                 "exec-root": "/run/ops-container-platform",
                 "pidfile": str(ROOT / "run/docker.pid"),
-                "bridge": "opsjobs0",
                 "group": "root",
                 "live-restore": True,
                 "log-driver": "local",
@@ -102,18 +101,31 @@ def install(ctx):
         "TimeoutStopSec=60\nLimitNOFILE=1048576\nTasksMax=infinity\n"
     )
     ctx.run(["systemctl", "daemon-reload"], label="engine-unit-load")
-    ctx.run(["systemctl", "start", unit.name], label="engine-start", timeout=150)
+    try:
+        ctx.run(["systemctl", "start", unit.name], label="engine-start", timeout=150)
+    except LabError:
+        output = ctx.run(
+            ["journalctl", "--unit", unit.name, "--no-pager", "-n", "50"],
+            label="engine-start-diagnostic",
+        )
+        ctx.report.setdefault("private_diagnostics", []).append(
+            {"label": "engine-journal", "output": output[-16000:]}
+        )
+        raise
     info = json.loads(ctx.docker(["info", "--format", "{{json .}}"], label="engine-info"))
     ctx.check("engine_version_pinned", info["ServerVersion"] == lock["assets"]["engine"]["version"])
     ctx.check("engine_label", "io.ops.lab=" + LAB_ID in info["Labels"])
     ctx.check("engine_private_data", info["DockerRootDir"] == str(ROOT / "engine-data"))
     ctx.check("engine_apparmor", any("apparmor" in x for x in info["SecurityOptions"]))
     (ROOT / "engine-owner.json").write_text(json.dumps({"id": info["ID"], "lab_id": LAB_ID}))
+    plugin_versions = {}
     for name in ("compose", "buildx"):
         output = ctx.docker([name, "version"], label=name + "-version")
         ctx.check(name + "_pinned", lock["assets"][name]["version"] in output)
+        plugin_versions[name] = output.strip()
     ctx.report["engine"] = {
         "version": info["ServerVersion"],
+        "plugins": plugin_versions,
         "architecture": info["Architecture"],
         "cgroup_version": info["CgroupVersion"],
         "security_options": info["SecurityOptions"],
